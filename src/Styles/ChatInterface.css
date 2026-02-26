@@ -1,0 +1,317 @@
+/* Input Bar Container */
+.input-bar-wrapper {
+    max-width: 830px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.input-bar-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 28px !important;
+    gap: 8px;
+    height: auto;
+    min-height: fit-content;
+    position: relative;
+    background: var(--bg-secondary);
+    /* Ensure background stays consistent */
+}
+
+.input-textarea {
+    padding: 0;
+    font-size: 16px;
+    background: transparent;
+    resize: none;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.input-bottom-row {
+    width: 100%;
+    display: flex;
+    /* ✅ Changed: Use flex-start and align-items center to keep button on the right */
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ✅ NEW: Separate container for model pickers to handle wrapping inside itself */
+.input-bottom-row>div:first-child {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allows "Deepthinking" and "Gemini" to wrap if needed */
+    gap: 8px;
+    flex: 1;
+    /* Takes up all space except what the Send button needs */
+    min-width: 0;
+    /* Important for flex-shrink logic */
+}
+
+/* ✅ FIXED: Ensures the Send Button is ALWAYS on the far right and stays in place */
+.input-bottom-row .ant-btn,
+.input-bottom-row button {
+    flex-shrink: 0;
+    /* Prevents the button from being squished */
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    /* Keeps it pushed to the right edge */
+}
+
+.input-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-color);
+    align-self: center;
+}
+
+.input-disclaimer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* Chat Interface Main Container */
+.chat-interface-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Modal Styles */
+.modal-section {
+    margin-bottom: 24px;
+}
+
+.modal-section-title {
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.modal-input-flex {
+    flex: 1;
+}
+
+.modal-file-selected {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.modal-divider {
+    margin: 16px 0;
+}
+
+.modal-search-input {
+    margin-bottom: 16px;
+}
+
+.modal-topics-scroll {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px;
+}
+
+.modal-topic-card-selected {
+    cursor: pointer;
+    border: 2px solid var(--accent-blue);
+    background: var(--bg-hover);
+}
+
+.modal-topic-card {
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    padding: 5px;
+}
+
+.modal-topic-name {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.modal-empty-topics {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-secondary);
+}
+
+.modal-load-more-col {
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Branding Header (Collapsed Sidebar) */
+.branding-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    animation: fadeInBranding 0.3s ease-out;
+}
+
+.branding-logo-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.branding-text {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+@keyframes fadeInBranding {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scrollable Chat Area */
+.chat-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.chat-content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100%;
+}
+
+.chat-content-wrapper-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chat-content-wrapper-filled {
+    display: block;
+    justify-content: flex-start;
+}
+
+/* Welcome Container (Empty Chat) */
+.welcome-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10%;
+}
+
+/* Messages Area */
+.messages-wrapper {
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.ai-content-icon {
+    margin-bottom: 12px;
+}
+
+.ai-sources-wrapper {
+    margin-top: 20px;
+}
+
+.ai-sources-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Loading State */
+.loading-card {
+    width: fit-content;
+    padding: 12px 24px;
+}
+
+.loading-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Bottom Input Area */
+.bottom-input-wrapper {
+    padding: 0 20px 20px 20px;
+    background: transparent;
+}
+
+/* Card Body Padding Override */
+.modal-topic-card .ant-card-body,
+.modal-topic-card-selected .ant-card-body {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Icon Styling */
+.accent-icon {
+    color: var(--accent-blue);
+    font-size: 18px;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+
+@media screen and (max-width: 768px) {
+    .chat-content-wrapper {
+        padding: 0 16px;
+    }
+
+    .messages-wrapper {
+        padding-top: 40px;
+    }
+
+    .bottom-input-wrapper {
+        padding: 0 12px 12px 12px;
+    }
+
+    .input-bar-container {
+        padding: 12px;
+        border-radius: 20px !important;
+    }
+
+    .welcome-line-2 {
+        font-size: 32px !important;
+    }
+
+    .welcome-line-1 {
+        font-size: 24px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /* ✅ NEW: On very small screens, make model names shorter or hide icons to save space */
+    .input-bottom-row {
+        gap: 4px;
+    }
+
+    .input-bottom-row>div:first-child span {
+        font-size: 12px;
+    }
+}

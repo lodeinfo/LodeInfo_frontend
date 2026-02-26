@@ -1,0 +1,41 @@
+/* TopicManager.css */
+
+/* Topic Create Section */
+.topic-create-section {
+    margin-bottom: 20px;
+}
+
+
+.topic-input {
+    margin-bottom: 10px;
+}
+
+
+.topics-list {
+    margin-top: 20px;
+
+}
+
+
+.topic-card {
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.topic-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.topic-name {
+    font-weight: bold;
+}
+
+
+.topic-date {
+    color: #888;
+    font-size: 12px;
+}

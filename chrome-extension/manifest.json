@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "LodeInfo Context Bridge",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    "host_permissions": [
+        "http://localhost:8000/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "commands": {
+        "send-context": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+L"
+            },
+            "description": "Send page context to LodeInfo"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}

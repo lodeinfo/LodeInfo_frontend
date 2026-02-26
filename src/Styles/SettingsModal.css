@@ -1,0 +1,17 @@
+/* SettingsModal.css */
+
+
+.settings-modal-content {
+    padding: 10px 0;
+}
+
+
+.settings-theme-label {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+
+.settings-divider {
+    margin: 8px 0;
+}

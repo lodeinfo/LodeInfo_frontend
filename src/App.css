@@ -1,0 +1,404 @@
+/* Google Fonts import if possible, otherwise rely on system fonts that look similar */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap');
+
+/* Light Theme Variables */
+[data-theme="light"] {
+    --bg-primary: #f0f4f9;
+    --bg-sidebar: #f0f4f9;
+    --bg-sidebar-active: #dce3e9;
+    --bg-content: #ffffff;
+    --bg-input: #f0f4f9;
+    --bg-input-focus: #ffffff;
+    --bg-hover: #dce3e9;
+    --bg-active: #c2e7ff;
+    --bg-sources: #f0f4f9;
+    --text-primary: #1f1f1f;
+    --text-secondary: #444746;
+    --text-tertiary: #5f6368;
+    --text-active: #001d35;
+    --accent-blue: #1a73e8;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.03);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --bg-primary: #131314;
+    --bg-sidebar: #1e1e1e;
+    --bg-sidebar-active: #2d2d2d;
+    --bg-content: #2f2f2f;
+    --bg-input: #3b3b3b;
+    --bg-input-focus: #404040;
+    --bg-hover: #404040;
+    --bg-active: #1e3a5f;
+    --bg-sources: #3b3b3b;
+    --text-primary: #e3e3e3;
+    --text-secondary: #b4b4b4;
+    --text-tertiary: #8e8e8e;
+    --text-active: #c2e7ff;
+    --accent-blue: #8ab4f8;
+    --border-color: #404040;
+    --shadow-light: rgba(0, 0, 0, 0.2);
+    --shadow-medium: rgba(0, 0, 0, 0.3);
+    --radius-lg: 24px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Ensure all text inherits theme colors */
+span,
+p,
+div,
+label,
+input,
+textarea {
+    color: inherit;
+}
+
+.ant-typography {
+    color: var(--text-primary);
+}
+
+/* Sidebar Styling */
+.gemini-sider {
+    background: var(--bg-content);
+    border-right: none !important;
+    overflow-x: hidden !important;
+    margin: 12px 0 12px 12px !important;
+    border-radius: 24px !important;
+    height: calc(100vh - 24px) !important;
+    /* box-shadow: 0 4px 12px var(--shadow-medium); */
+}
+
+.gemini-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 24px 16px 16px;
+    /* Increased top padding */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gemini-menu-item {
+    margin: 4px 12px;
+    padding: 10px 16px;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-primary);
+    transition: background 0.2s;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.gemini-menu-item:hover {
+    background-color: var(--bg-sidebar-active);
+}
+
+.gemini-menu-item.active {
+    background-color: var(--bg-active);
+    color: var(--text-active);
+}
+
+.gemini-section-title {
+    padding: 16px 24px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Main Layout */
+.gemini-content {
+    background: var(--bg-content);
+    border-radius: var(--radius-lg);
+    margin: 12px;
+    /* Uniform margin */
+    padding: 0;
+    /* content takes full space */
+    border: none;
+    box-shadow: none;
+    /* Removed shadow */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: calc(100vh - 24px);
+    /* Adjusted height */
+}
+
+/* Redesigned Chat Interface */
+.message-row {
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.message-row-user {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-row-ai {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.chat-bubble-user {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    padding: 12px 24px;
+    border-radius: 28px;
+    max-width: 80%;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.ai-message-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.ai-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.ai-avatar {
+    width: 32px;
+    height: 32px;
+    background: #111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.ai-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.ai-time {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 400;
+}
+
+.chat-card-ai {
+    background: var(--bg-content);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 24px;
+    width: 100%;
+    box-shadow: 0 1px 3px var(--shadow-light);
+    transition: box-shadow 0.2s;
+}
+
+.chat-card-ai:hover {
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.ai-content {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.ai-content p:first-child {
+    margin-top: 0;
+}
+
+.ai-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Custom markdown styles within AI content */
+.ai-content h1,
+.ai-content h2,
+.ai-content h3 {
+    font-family: 'Outfit', sans-serif;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.ai-content h1 {
+    font-size: 24px;
+    border-left: 4px solid #111;
+    padding-left: 12px;
+}
+
+.ai-content ul,
+.ai-content ol {
+    padding-left: 20px;
+}
+
+.ai-content li {
+    margin-bottom: 8px;
+}
+
+.source-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: var(--bg-sources);
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+/* Chat Interface Specifics */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 0 20px 20px;
+
+}
+
+.welcome-text {
+    text-align: left;
+    width: 100%;
+    max-width: 830px;
+    /* Match input width */
+    margin-bottom: 40px;
+}
+
+.welcome-line-1 {
+    font-size: 32px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    /* Or similar cursive/italic font */
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+.welcome-line-2 {
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+[data-theme="dark"] .welcome-line-1 {
+    color: #888;
+}
+
+.gemini-input-container {
+    background: var(--bg-input);
+    border-radius: 999px;
+    /* Pill shape */
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    /* Push to bottom if flex */
+    border: 1px solid transparent;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.gemini-input-container:focus-within {
+    background: var(--bg-input-focus);
+    box-shadow: 0 2px 6px var(--shadow-medium);
+    border-color: var(--border-color);
+}
+
+.gemini-input {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    resize: none;
+    font-size: 16px;
+    padding: 8px 0;
+}
+
+.gemini-input:focus {
+    outline: none;
+}
+
+.topic-pill {
+    padding: 8px 16px;
+    border-radius: 99px;
+    background: var(--bg-input);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.topic-pill:hover {
+    background: var(--bg-hover);
+}
+
+.ant-layout-sider {
+    overflow: hidden !important;
+}
+
+/* Custom Scrollbar Styles */
+/* For Webkit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #646363;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a transparent;
+}
+
+/* --- UI LOCK ADJUSTMENTS --- */
+/* Lock the screen from breaking when smaller than 470px */
+html,
+body {
+    min-width: 470px;
+    overflow-x: auto;
+}
+
+.ant-layout {
+    min-width: 470px;
+}
