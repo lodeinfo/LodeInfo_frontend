@@ -13,7 +13,7 @@ import useShortcuts from "../hooks/useShortcuts";
 import "../Styles/MainLayout.css";
 
 const { Content } = Layout;
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API = import.meta.env.VITE_API_BASE_URL;
 
 function MainLayout() {
     const { theme: currentTheme } = useTheme();
@@ -90,7 +90,7 @@ function MainLayout() {
 
             setSearchLoading(true);
             try {
-                const res = await axios.get(`${API_BASE_URL}/threads/search/`, {
+                const res = await axios.get(`${API}/threads/search/`, {
                     params: { q: searchQuery, user_id: user.id }
                 });
                 setSearchResults(res.data);
@@ -113,7 +113,7 @@ function MainLayout() {
             // Add 2s artificial delay for better loading visibility
             await new Promise(resolve => setTimeout(resolve, 2000));
 
-            const res = await axios.get(`${API_BASE_URL}/topics/`, {
+            const res = await axios.get(`${API}/topics/`, {
                 params: { page, search }
             });
 
@@ -141,7 +141,7 @@ function MainLayout() {
 
     const fetchThreads = async () => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/threads/`, {
+            const res = await axios.get(`${API}/threads/`, {
                 params: { user_id: user.id }
             });
             setThreads(res.data);
@@ -152,7 +152,7 @@ function MainLayout() {
 
     const handleTopicCreate = async (name) => {
         try {
-            const res = await axios.post(`${API_BASE_URL}/topics/`, { name });
+            const res = await axios.post(`${API}/topics/`, { name });
             message.success("Knowledge Base topic created");
             fetchTopics(1, topicSearchQuery, true);
             return res.data;
@@ -182,7 +182,7 @@ function MainLayout() {
             };
 
             try {
-                await axios.post(`${API_BASE_URL}/documents/`, payload);
+                await axios.post(`${API}/documents/`, payload);
 
                 message.success("Text stored & embedded successfully");
                 return true;
@@ -202,7 +202,7 @@ function MainLayout() {
         formData.append("user_id", user.id);
 
         try {
-            await axios.post(`${API_BASE_URL}/documents/`, formData, {
+            await axios.post(`${API}/documents/`, formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
 
@@ -282,7 +282,7 @@ function MainLayout() {
                                 topicsLoading={topicsLoading}
                                 onAskQuestion={async (question, threadId, topicId, model, mode) => {
                                     try {
-                                        const res = await axios.post(`${API_BASE_URL}/ask/`, {
+                                        const res = await axios.post(`${API}/ask/`, {
                                             thread_id: threadId || selectedThread?.id,
                                             topic_id: topicId || selectedTopic?.id,
                                             question,
@@ -294,7 +294,7 @@ function MainLayout() {
                                         if (!threadId && !selectedThread?.id && res.data.thread_id) {
                                             await fetchThreads();
                                             const threadRes = await axios.get(
-                                                `${API_BASE_URL}/threads/${res.data.thread_id}/`
+                                                `${API}/threads/${res.data.thread_id}/`
                                             );
                                             setSelectedThread(threadRes.data);
                                         }

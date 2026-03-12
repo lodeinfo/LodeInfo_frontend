@@ -9,7 +9,8 @@ import { useAuth } from "../contexts/AuthContext";
 import TopicModal from "../components/TopicModal"; // Added TopicModal
 import "../Styles/QuickInput.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API = import.meta.env.VITE_API_BASE_URL;
+console.log("Current API Endpoint:", API);
 
 /* ✅ TRUE DEFAULT MODEL */
 const DEFAULT_MODEL = "gemini-3-flash-preview";
@@ -73,7 +74,7 @@ export default function QuickInput() {
         const fetchThreads = async () => {
             if (!user?.id) return;
             try {
-                const res = await axios.get(`${API_BASE_URL}/threads/`, {
+                const res = await axios.get(`${API}/threads/`, {
                     params: { user_id: user.id, intent: intent } // Pass intent to filter history
                 });
                 setThreads(res.data);
@@ -92,7 +93,7 @@ export default function QuickInput() {
         if (topicsLoading) return;
         setTopicsLoading(true);
         try {
-            const res = await axios.get(`${API_BASE_URL}/topics/`, {
+            const res = await axios.get(`${API}/topics/`, {
                 params: { page, search }
             });
             const newTopics = res.data.results || [];
@@ -119,7 +120,7 @@ export default function QuickInput() {
 
     const handleTopicCreate = async (name) => {
         try {
-            const res = await axios.post(`${API_BASE_URL}/topics/`, { name });
+            const res = await axios.post(`${API}/topics/`, { name });
             message.success("Knowledge Base topic created");
             fetchTopics(1, topicSearchQuery, true);
             return res.data;
@@ -141,7 +142,7 @@ export default function QuickInput() {
                 user_id: user.id
             };
             try {
-                await axios.post(`${API_BASE_URL}/documents/`, payload);
+                await axios.post(`${API}/documents/`, payload);
                 message.success("Text stored & embedded successfully");
                 return true;
             } catch (err) {
@@ -156,7 +157,7 @@ export default function QuickInput() {
         formData.append("file", file);
         formData.append("user_id", user.id);
         try {
-            await axios.post(`${API_BASE_URL}/documents/`, formData, {
+            await axios.post(`${API}/documents/`, formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
             message.success("Document uploaded successfully");
@@ -175,7 +176,7 @@ export default function QuickInput() {
             return;
         }
         try {
-            const res = await axios.get(`${API_BASE_URL}/context/latest/`);
+            const res = await axios.get(`${API}/context/latest/`);
             if (res.data?.context) {
                 setCapturedContext(res.data);
             } else {
@@ -263,7 +264,7 @@ export default function QuickInput() {
         if (translateOverlayOpen && selectedTopic) {
             const fetchTopicContent = async () => {
                 try {
-                    const res = await axios.get(`${API_BASE_URL}/documents/`, {
+                    const res = await axios.get(`${API}/documents/`, {
                         params: { topic: selectedTopic.id }
                     });
                     const fullText = res.data.map(doc => doc.content).join("\n\n");
@@ -280,7 +281,7 @@ export default function QuickInput() {
         setSelectedThread(thread);
         setLoading(true);
         try {
-            const res = await axios.get(`${API_BASE_URL}/messages/`, {
+            const res = await axios.get(`${API}/messages/`, {
                 params: { thread_id: thread.id }
             });
 
@@ -348,7 +349,7 @@ export default function QuickInput() {
             // If a topic is selected, fetch its content
             if (selectedTopic) {
                 try {
-                    const res = await axios.get(`${API_BASE_URL}/documents/`, {
+                    const res = await axios.get(`${API}/documents/`, {
                         params: { topic: selectedTopic.id }
                     });
                     // Combine all document contents for that topic
@@ -374,7 +375,7 @@ export default function QuickInput() {
         setLoading(true);
 
         try {
-            const res = await axios.post(`${API_BASE_URL}/ask/`, {
+            const res = await axios.post(`${API}/ask/`, {
                 question: finalQuestion,
                 user_id: user?.id,
                 thread_id: selectedThread?.id,
@@ -395,11 +396,11 @@ export default function QuickInput() {
 
             // If a new thread was created, refresh the sidebar threads
             if (!selectedThread?.id && res.data.thread_id) {
-                const threadRes = await axios.get(`${API_BASE_URL}/threads/${res.data.thread_id}/`);
+                const threadRes = await axios.get(`${API}/threads/${res.data.thread_id}/`);
                 setSelectedThread(threadRes.data);
 
                 // Refresh threads list
-                const tRes = await axios.get(`${API_BASE_URL}/threads/`, {
+                const tRes = await axios.get(`${API}/threads/`, {
                     params: { user_id: user?.id, intent: intent } // Correctly filter the refreshed list
                 });
                 setThreads(tRes.data);

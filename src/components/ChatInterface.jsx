@@ -10,7 +10,8 @@ import WelcomeScreen from "./WelcomeScreen";
 import MessageList from "./MessageList";
 import BrandingHeader from "./BrandingHeader";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API = import.meta.env.VITE_API_BASE_URL;
+console.log("Current API Endpoint:", API);
 
 const ChatInterface = ({
     user,
@@ -81,7 +82,7 @@ const ChatInterface = ({
             if (thread?.id && thread.id !== lastThreadIdRef.current) {
                 lastThreadIdRef.current = thread.id;
                 try {
-                    const res = await axios.get(`${API_BASE_URL}/messages/`, {
+                    const res = await axios.get(`${API}/messages/`, {
                         params: { thread_id: thread.id }
                     });
 

@@ -69,9 +69,9 @@ export const AuthProvider = ({ children }) => {
             }
 
             try {
-                // Use fetch to avoid axios dependency issue if not set up,
-                // but if project uses axios, using axios is fine. Using fetch for simplicity here.
-                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/verify/`, {
+                const API = import.meta.env.VITE_API_BASE_URL;
+                console.log("Verify API Endpoint:", API);
+                const response = await fetch(`${API}/auth/verify/`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -139,7 +139,8 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("authTokens");
 
         // Redirect to Backend -> Simplified logout flow
-        window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/logout/`;
+        const API = import.meta.env.VITE_API_BASE_URL;
+        window.location.href = `${API}/auth/logout/`;
     };
 
     if (isLoading) {
