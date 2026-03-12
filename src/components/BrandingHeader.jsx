@@ -1,11 +1,12 @@
 import React from "react";
+import logo from "../assets/LodeInfo.ico";
 
 const BrandingHeader = () => {
     return (
         <div className="branding-header">
             {/* ✅ Added the logo image to match the sidebar style */}
             <img
-                src="/LodeInfo.ico"
+                src={logo}
                 alt="Logo"
                 className="branding-logo-img"
             />

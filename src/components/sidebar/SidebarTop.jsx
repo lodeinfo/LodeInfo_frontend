@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../../assets/LodeInfo.ico";
 import { Button, Input } from "antd";
 import {
     MenuOutlined,
@@ -40,7 +41,7 @@ function SidebarTop({
                 {!collapsed && (
                     <>
                         <img
-                            src="/LodeInfo.ico"
+                            src={logo}
                             alt="Logo"
                             className="sidebar-custom-logo logo-visible"
                         />

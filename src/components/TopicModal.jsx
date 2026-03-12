@@ -3,7 +3,7 @@ import { Modal, Input, Button, Upload, Space, Divider, Card, Row, Col, Skeleton 
 import { CloudUploadOutlined, CheckOutlined, SearchOutlined } from "@ant-design/icons";
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const TopicModal = ({
     open,

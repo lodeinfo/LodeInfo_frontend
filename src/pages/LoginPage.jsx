@@ -24,7 +24,7 @@ const LoginPage = () => {
     }, [isLoggedIn, navigate, location]);
 
     const handleLogin = (provider) => {
-        const backendUrl = "http://localhost:8000/api/auth/login/";
+        const backendUrl = `${import.meta.env.VITE_API_BASE_URL}/auth/login/`;
         const query = provider ? `?provider=${provider}` : "";
         window.location.href = `${backendUrl}${query}`;
     };

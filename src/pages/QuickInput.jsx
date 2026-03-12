@@ -9,7 +9,7 @@ import { useAuth } from "../contexts/AuthContext";
 import TopicModal from "../components/TopicModal"; // Added TopicModal
 import "../Styles/QuickInput.css";
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 /* ✅ TRUE DEFAULT MODEL */
 const DEFAULT_MODEL = "gemini-3-flash-preview";
