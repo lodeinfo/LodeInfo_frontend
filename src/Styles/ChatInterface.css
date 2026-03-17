@@ -206,9 +206,16 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Keep centered in screen */
     justify-content: center;
     padding-bottom: 10%;
+}
+
+.welcome-text {
+    width: 100%;
+    max-width: 830px; /* Same as input-bar-wrapper */
+    text-align: left;
+    margin-bottom: 24px;
 }
 
 /* Messages Area */
