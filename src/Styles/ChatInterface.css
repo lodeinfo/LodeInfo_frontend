@@ -153,18 +153,18 @@
 }
 
 .branding-logo-img {
-    width: 80px !important;
-    height: 80px !important;
+    width: 60px !important;
+    height: 60px !important;
     object-fit: contain !important;
-    transform: scale(2.8) !important;
-    margin-left: -15px !important;
+    transform: scale(2.2) !important;
+    margin-left: -10px !important;
 }
 
 .branding-text {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     color: var(--text-primary);
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 @keyframes fadeInBranding {
