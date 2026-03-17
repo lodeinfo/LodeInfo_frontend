@@ -28,8 +28,7 @@
     }
 
     .branding-expanded {
-        padding: 18px 2px;
-        /* Anchor center at 36px for 72px sidebar */
+        padding: 18px 16px; /* 16px padding + 20px (half 40px logo) = 36px center anchor */
         align-items: flex-start;
     }
 
@@ -38,14 +37,14 @@
         align-items: center;
         width: 100%;
         margin-bottom: 8px;
-        min-height: 50px;
+        min-height: 40px;
         overflow: visible;
         flex-wrap: nowrap;
     }
 
     .branding-expanded .sidebar-logo-container {
         justify-content: flex-start;
-        gap: 10px;
+        gap: 8px; /* Slightly tighter gap for smaller logo */
         /* Fixed gap for perfect alignment */
     }
 
@@ -93,13 +92,12 @@
 
     .branding-expanded .menu-toggle-btn {
         margin-top: 4px;
-        margin-left: 16px;
-        /* Align with 36px center */
+        margin-left: 0; /* Aligned with the 16px padding of the wrapper */
     }
 
     .sidebar-custom-logo {
-        width: 50px !important;
-        height: 50px !important;
+        width: 40px !important;
+        height: 40px !important;
         object-fit: contain !important;
         transition: none;
         flex-shrink: 0;
