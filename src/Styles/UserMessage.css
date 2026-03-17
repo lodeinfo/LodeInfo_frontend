@@ -7,19 +7,24 @@
 }
 
 .editing-mode {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding: 8px !important;
+    /* No background change as per user request */
+    padding: inherit !important;
 }
 
 .user-edit-textarea {
     background: transparent !important;
     border: none !important;
-    color: var(--text-primary) !important;
-    font-size: 16px !important;
+    color: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-weight: inherit !important;
     padding: 0 !important;
+    margin: 0 !important;
     box-shadow: none !important;
     font-family: inherit !important;
+    width: 100% !important;
+    outline: none !important;
+    resize: none !important;
 }
 
 .user-edit-textarea:focus {
