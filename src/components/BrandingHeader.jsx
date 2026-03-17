@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/LodeInfo.ico";
+import logo from "../assets/LodeInfo (3).ico";
 
 const BrandingHeader = () => {
     return (

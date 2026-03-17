@@ -119,7 +119,7 @@ const TopicModal = ({
                 style={{ top: 20 }} // Bring it up a bit
             >
                 <div className="modal-notebook-heading" style={{ margin: '0 0 20px' }}>
-                    <div className="modal-notebook-title" style={{ fontSize: 20 }}>Create Smart Overviews from</div>
+                    <div className="modal-notebook-title" style={{ fontSize: 20 }}>Create Topics for</div>
                     <div className="modal-notebook-subtitle" style={{ fontSize: 20 }}>your documents</div>
                 </div>
 
@@ -136,7 +136,7 @@ const TopicModal = ({
                 <div className="modal-section" style={{ marginBottom: 14 }}>
                     <div className="modal-drop-zone" style={{ padding: '24px 16px' }}>
                         <div className="modal-drop-text" style={{ fontSize: 14, marginBottom: 14 }}>or drop your files here</div>
-                        
+
                         <div className="modal-action-pills">
                             <Upload
                                 beforeUpload={(file) => {
@@ -152,7 +152,7 @@ const TopicModal = ({
                                 </div>
                             </Upload>
 
-                            <div 
+                            <div
                                 className="modal-action-pill"
                                 onClick={() => textAreaRef.current?.focus()}
                             >
@@ -167,9 +167,9 @@ const TopicModal = ({
                                 onClick={onSubmit}
                                 loading={uploading}
                                 disabled={!newTopicName.trim()}
-                                style={{ 
-                                    marginLeft: 12, 
-                                    height: 40, 
+                                style={{
+                                    marginLeft: 12,
+                                    height: 40,
                                     padding: '0 24px',
                                     fontSize: 14,
                                     fontWeight: 500,

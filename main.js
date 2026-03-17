@@ -9,7 +9,7 @@ let mainWindow = null;
 let floatingWindow = null;
 let tray = null;
 
-const iconPath = path.resolve(__dirname, "public", "LodeInfo.ico");
+const iconPath = path.resolve(__dirname, "public", "LodeInfo (3).ico");
 
 /* ---------------- MAIN WINDOW ---------------- */
 
@@ -31,7 +31,7 @@ function createWindow() {
   if (isDev) {
     mainWindow.loadURL("http://localhost:5173");
   } else {
-    mainWindow.loadFile(path.join(__dirname, "dist", "index.html"));
+    mainWindow.loadURL("https://lodeinfofrontend.vercel.app/");
   }
 
   mainWindow.maximize();
@@ -72,7 +72,7 @@ function createFloatingWindow(intent = "manual") {
 
   const targetURL = isDev
     ? `http://localhost:5173/quick-input?intent=${intent}`
-    : undefined;
+    : `https://lodeinfofrontend.vercel.app/quick-input?intent=${intent}`;
 
   /* ✅ NEW → Contextual sizing logic */
   const isContextual = intent === "contextual";
