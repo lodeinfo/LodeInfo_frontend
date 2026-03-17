@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import logo from "../assets/LodeInfo.ico";
 import "../Styles/Login.css";
 
 const { Title, Text } = Typography;
@@ -38,8 +39,8 @@ const LoginPage = () => {
 
             <Card className="login-card" variant="borderless">
                 <div className="login-header">
-                    <div className="logo-placeholder">
-                        <div className="logo-inner"></div>
+                    <div className="login-logo-container">
+                        <img src={logo} alt="LodeInfo Logo" className="login-logo-img" />
                     </div>
                     <Title
                         level={2}
