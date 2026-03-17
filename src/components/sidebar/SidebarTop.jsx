@@ -27,8 +27,21 @@ function SidebarTop({
     return (
         <div className="sidebar-top-section">
             <div
-                className={`gemini-logo ${collapsed ? 'logo-area-collapsed' : 'logo-area-expanded'}`}
+                className={`sidebar-branding-wrapper ${collapsed ? 'branding-collapsed' : 'branding-expanded'}`}
             >
+                <div className="sidebar-logo-container">
+                    <img
+                        src={logo}
+                        alt="Logo"
+                        className="sidebar-custom-logo logo-visible"
+                    />
+                    {!collapsed && (
+                        <span className="logo-text logo-text-expanded">
+                            LodeInfo
+                        </span>
+                    )}
+                </div>
+
                 <Button
                     type="text"
                     shape="circle"
@@ -36,20 +49,6 @@ function SidebarTop({
                     onClick={() => setCollapsed(!collapsed)}
                     className="menu-toggle-btn"
                 />
-
-                {/* ✅ Updated: Logo only renders when NOT collapsed to allow it to "move" to ChatInterface */}
-                {!collapsed && (
-                    <>
-                        <img
-                            src={logo}
-                            alt="Logo"
-                            className="sidebar-custom-logo logo-visible"
-                        />
-                        <span className="logo-text logo-text-expanded">
-                            LodeInfo
-                        </span>
-                    </>
-                )}
             </div>
 
             <div

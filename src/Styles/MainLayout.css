@@ -17,17 +17,8 @@
         flex-shrink: 0;
     }
 
-    .logo-area-expanded {
-        justify-content: flex-start;
-        gap: 14px;
-        padding: 18px 18px;
-    }
-
-    .logo-area-collapsed {
-        justify-content: center;
-        gap: 12px;
-        padding: 15px 16px;
-        overflow: hidden;
+    .logo-area-expanded, .logo-area-collapsed {
+        display: none; /* Replaced by sidebar-branding-wrapper */
     }
 
     .menu-toggle-btn {
@@ -233,22 +224,43 @@
         color: var(--text-secondary);
     }
 
-    /* Logo Layout Fix */
-    .logo-area-expanded {
+    .sidebar-branding-wrapper {
         display: flex;
+        flex-direction: column;
+        padding: 10px 0;
         align-items: center;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 18px 18px;
+        width: 100%;
+        transition: all 0.3s ease;
     }
 
-    .logo-area-collapsed {
+    .branding-expanded {
+        padding: 18px 18px;
+        align-items: flex-start;
+    }
+
+    .sidebar-logo-container {
         display: flex;
         align-items: center;
-        justify-content: center;
+        width: 100%;
+        margin-bottom: 8px; /* Space between logo and hamburger */
+    }
+
+    .branding-expanded .sidebar-logo-container {
+        justify-content: flex-start;
         gap: 0;
-        overflow: hidden;
-        padding: 10px 0;
+    }
+
+    .branding-collapsed .sidebar-logo-container {
+        justify-content: center;
+    }
+
+    .branding-collapsed .menu-toggle-btn {
+        margin: 0 auto;
+    }
+
+    .branding-expanded .menu-toggle-btn {
+        margin-top: 4px;
+        margin-left: 0;
     }
 
     /* Custom Logo */
@@ -257,6 +269,11 @@
         height: 68px !important;
         object-fit: contain !important;
         transition: all 0.3s ease;
+    }
+
+    .branding-collapsed .sidebar-custom-logo {
+        width: 40px !important; /* Smaller in collapsed state */
+        height: 40px !important;
     }
 
     .logo-visible {
