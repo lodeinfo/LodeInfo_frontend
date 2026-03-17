@@ -2,29 +2,62 @@
 
 .user-message-container {
     position: relative;
+    transition: all 0.3s ease;
+    min-width: 60px;
 }
 
-.user-message-copy-btn {
+.editing-mode {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 8px !important;
+}
+
+.user-edit-textarea {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-primary) !important;
+    font-size: 16px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    font-family: inherit !important;
+}
+
+.user-edit-textarea:focus {
+    box-shadow: none !important;
+}
+
+.user-message-actions {
     position: absolute;
-    bottom: -28px;
+    bottom: -32px;
     right: 0;
-    background: rgba(40, 40, 40, 0.85);
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+}
+
+.user-message-action-btn {
+    background: rgba(30, 30, 30, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    padding: 3px 8px;
-    cursor: pointer;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
-    gap: 4px;
-    font-size: 11px;
-    z-index: 10;
-    transition: color 0.2s;
-}
-
-.user-message-copy-btn.copied {
-    color: #4caf50;
-}
-
-.user-message-copy-btn.not-copied {
+    justify-content: center;
+    cursor: pointer;
     color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.user-message-action-btn:hover {
+    background: rgba(50, 50, 50, 1);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.user-message-action-btn.copied {
+    color: #4caf50;
+    border-color: #4caf50;
 }

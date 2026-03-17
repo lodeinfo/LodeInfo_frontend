@@ -5,7 +5,7 @@ import AIMessage from "./AIMessage";
 import LoadingMessage from "./LoadingMessage";
 
 const MessageList = forwardRef(
-    ({ conversation, loading, thinkingText, selectedModel, selectedTopic }, ref) => {
+    ({ conversation, loading, thinkingText, selectedModel, selectedTopic, onEditMessage }, ref) => {
         return (
             <div className="messages-wrapper">
                 <Flex vertical gap="large">
@@ -18,7 +18,11 @@ const MessageList = forwardRef(
                                 }`}
                         >
                             {msg.type === "user" ? (
-                                <UserMessage content={msg.content} />
+                                <UserMessage
+                                    content={msg.content}
+                                    index={index}
+                                    onEdit={onEditMessage}
+                                />
                             ) : (
                                 <AIMessage
                                     content={msg.content}
