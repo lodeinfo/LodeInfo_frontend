@@ -38,14 +38,14 @@
         align-items: center;
         width: 100%;
         margin-bottom: 8px;
-        min-height: 68px;
+        min-height: 50px;
         overflow: visible;
         flex-wrap: nowrap;
     }
 
     .branding-expanded .sidebar-logo-container {
         justify-content: flex-start;
-        gap: 1px;
+        gap: 10px;
         /* Fixed gap for perfect alignment */
     }
 
@@ -98,8 +98,8 @@
     }
 
     .sidebar-custom-logo {
-        width: 68px !important;
-        height: 68px !important;
+        width: 50px !important;
+        height: 50px !important;
         object-fit: contain !important;
         transition: none;
         flex-shrink: 0;
