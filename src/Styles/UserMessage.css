@@ -7,16 +7,15 @@
 }
 
 .editing-mode {
-    /* No background change as per user request */
-    padding: inherit !important;
+    padding: 12px 24px !important; /* Matches exactly .chat-bubble-user */
 }
 
 .user-edit-textarea {
     background: transparent !important;
     border: none !important;
     color: inherit !important;
-    font-size: inherit !important;
-    line-height: inherit !important;
+    font-size: 15px !important; /* Match .chat-bubble-user from App.css */
+    line-height: 1.5 !important; /* Match .chat-bubble-user from App.css */
     font-weight: inherit !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -25,6 +24,7 @@
     width: 100% !important;
     outline: none !important;
     resize: none !important;
+    display: block !important;
 }
 
 .user-edit-textarea:focus {

@@ -56,10 +56,10 @@ const UserMessage = ({ content, index, onEdit }) => {
                     onKeyDown={(e) => {
                         if (e.key === "Escape") handleCancelEdit();
                     }}
-                    autoSize
+                    autoSize={{ minRows: 1 }}
                     className="user-edit-textarea"
                     autoFocus
-                    onBlur={handleSaveEdit} // Save on blur for better UX
+                    onBlur={handleSaveEdit}
                 />
             ) : (
                 <>
