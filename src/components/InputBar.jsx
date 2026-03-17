@@ -25,7 +25,7 @@ const InputBar = ({
                 <TextArea
                     ref={inputRef}
                     className="gemini-input input-textarea"
-                    placeholder="Enter a prompt for LodeInfo"
+                    placeholder="Ask me anything"
                     autoSize={{ minRows: 1, maxRows: 6 }}
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
