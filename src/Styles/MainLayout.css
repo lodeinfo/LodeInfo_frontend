@@ -28,7 +28,8 @@
     }
 
     .branding-expanded {
-        padding: 18px 2px; /* Anchor center at 36px for 72px sidebar */
+        padding: 18px 2px;
+        /* Anchor center at 36px for 72px sidebar */
         align-items: flex-start;
     }
 
@@ -44,7 +45,8 @@
 
     .branding-expanded .sidebar-logo-container {
         justify-content: flex-start;
-        gap: 8px; /* Fixed gap for perfect alignment */
+        gap: 8px;
+        /* Fixed gap for perfect alignment */
     }
 
     .branding-collapsed .sidebar-logo-container {
@@ -57,7 +59,8 @@
         white-space: nowrap;
         overflow: hidden;
         transition: all 0.3s ease;
-        color: var(--text-primary); /* Explicitly set color */
+        color: var(--text-primary);
+        /* Explicitly set color */
         flex-shrink: 0;
     }
 
@@ -69,11 +72,9 @@
     }
 
     .logo-text-collapsed {
-        opacity: 1 !important;
-        max-width: 200px;
-        display: inline-block;
-        visibility: visible !important;
-        margin-left: 10px;
+        opacity: 0;
+        max-width: 0;
+        display: none;
     }
 
     .menu-toggle-btn {
@@ -89,7 +90,8 @@
 
     .branding-expanded .menu-toggle-btn {
         margin-top: 4px;
-        margin-left: 16px; /* Align with 36px center */
+        margin-left: 16px;
+        /* Align with 36px center */
     }
 
     .sidebar-custom-logo {

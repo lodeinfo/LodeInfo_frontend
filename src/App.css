@@ -94,7 +94,7 @@ textarea {
 .gemini-sider {
     background: transparent !important;
     border-right: none !important;
-    overflow: visible !important;
+    overflow-x: hidden !important;
     margin: 12px 0 12px 12px !important;
     border-radius: 24px !important;
     height: calc(100vh - 24px) !important;
@@ -314,14 +314,16 @@ textarea {
 
 /* Custom markdown styles within AI content */
 .ai-content a {
-    color: #1a73e8; /* Always use Google blue for links */
+    color: #1a73e8;
+    /* Always use Google blue for links */
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
 }
 
 [data-theme="dark"] .ai-content a {
-    color: #8ab4f8; /* Dark mode optimized blue */
+    color: #8ab4f8;
+    /* Dark mode optimized blue */
 }
 
 .ai-content a:hover {
@@ -572,7 +574,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    height: 40px; /* Fixed height for symmetry */
+    height: 40px;
+    /* Fixed height for symmetry */
     padding: 0 24px;
     background: var(--bg-input);
     border: 1px solid var(--border-color);
@@ -625,7 +628,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 4px; /* Added margin to prevent clipping */
+    margin: 4px;
+    /* Added margin to prevent clipping */
 }
 
 .modal-topic-card {
@@ -636,7 +640,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 4px; /* Added margin to prevent clipping */
+    margin: 4px;
+    /* Added margin to prevent clipping */
 }
 
 .modal-topic-card:hover {
