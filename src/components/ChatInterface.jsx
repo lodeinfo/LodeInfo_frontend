@@ -223,8 +223,8 @@ const ChatInterface = ({
                 loadingTopics={topicsLoading}
             />
 
-            {/* ✅ Branding Header positioned relative to container */}
-            {sidebarCollapsed && <BrandingHeader />}
+            {/* ✅ Removed BrandingHeader to prevent double logo; using Sidebar logo as anchor */}
+            {/* {sidebarCollapsed && <BrandingHeader />} */}
 
             <div className="chat-scroll-area">
                 <div

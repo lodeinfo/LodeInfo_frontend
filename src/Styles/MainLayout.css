@@ -234,7 +234,7 @@
     }
 
     .branding-expanded {
-        padding: 18px 18px;
+        padding: 18px 6px; /* Adjusted to keep logo center at 40px */
         align-items: flex-start;
     }
 
@@ -242,12 +242,13 @@
         display: flex;
         align-items: center;
         width: 100%;
-        margin-bottom: 8px; /* Space between logo and hamburger */
+        margin-bottom: 8px;
+        min-height: 68px; /* Maintain height */
     }
 
     .branding-expanded .sidebar-logo-container {
         justify-content: flex-start;
-        gap: 0;
+        gap: 8px; /* Spacing between fixed logo and shifting text */
     }
 
     .branding-collapsed .sidebar-logo-container {
@@ -260,7 +261,7 @@
 
     .branding-expanded .menu-toggle-btn {
         margin-top: 4px;
-        margin-left: 0;
+        margin-left: 12px; /* Align with menu items */
     }
 
     /* Custom Logo */
@@ -268,12 +269,8 @@
         width: 68px !important;
         height: 68px !important;
         object-fit: contain !important;
-        transition: all 0.3s ease;
-    }
-
-    .branding-collapsed .sidebar-custom-logo {
-        width: 40px !important; /* Smaller in collapsed state */
-        height: 40px !important;
+        transition: none; /* Instant scale/position to prevent jumping */
+        flex-shrink: 0;
     }
 
     .logo-visible {
