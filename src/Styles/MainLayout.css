@@ -38,10 +38,11 @@
     .sidebar-logo-container {
         display: flex;
         align-items: center;
-        width: 100%;
+        width: auto; /* Allow it to grow beyond sidebar width */
+        min-width: 0;
         margin-bottom: 8px;
         min-height: 30px;
-        overflow: visible;
+        overflow: visible !important;
         flex-wrap: nowrap;
     }
 
@@ -53,10 +54,9 @@
         font-weight: 700;
         font-size: 22px;
         white-space: nowrap;
-        overflow: hidden;
+        overflow: visible !important; /* Allow spill out */
         transition: all 0.3s ease;
         color: var(--text-primary);
-        /* Explicitly set color */
         flex-shrink: 0;
     }
 
