@@ -12,6 +12,14 @@
     .sidebar-flex {
         height: 100%;
     }
+    
+    .gemini-sider {
+        overflow: visible !important;
+    }
+    
+    .gemini-sider .ant-layout-sider-children {
+        overflow: visible !important;
+    }
 
     .sidebar-top-section {
         flex-shrink: 0;
@@ -41,7 +49,7 @@
         width: 100%;
         margin-bottom: 8px;
         min-height: 24px;
-        overflow: hidden !important;
+        overflow: visible !important; /* Allow spill out when collapsed */
         flex-wrap: nowrap;
         gap: 15px; /* Increased spacing as requested */
     }
@@ -68,10 +76,11 @@
     }
 
     .logo-text-collapsed {
-        opacity: 0 !important;
-        max-width: 0 !important;
-        display: none !important;
-        visibility: hidden !important;
+        opacity: 1 !important;
+        max-width: 200px !important;
+        display: inline-block !important;
+        visibility: visible !important;
+        transform: translateX(0); /* Ensure it stays next to logo */
     }
 
     .menu-toggle-btn {
