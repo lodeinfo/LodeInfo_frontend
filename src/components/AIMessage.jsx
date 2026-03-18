@@ -119,7 +119,7 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
                     }}
                     style={{ cursor: "pointer", color: liked ? "#1677ff" : "inherit", transition: "all 0.2s" }}
                     className="feedback-icon"
-                    title="Like"
+                    title="Good response"
                 />
                 <DislikeOutlined 
                     onClick={() => {
@@ -129,7 +129,7 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
                     }}
                     style={{ cursor: "pointer", color: disliked ? "#ff4d4f" : "inherit", transition: "all 0.2s" }}
                     className="feedback-icon"
-                    title="Dislike"
+                    title="Bad response"
                 />
                 <ReloadOutlined 
                     onClick={onRedo}

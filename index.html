@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LodeInfo</title>
     <link rel="icon" type="image/x-icon" href="/LodeInfo.ico" />
+    <script>
+      (function () {
+        const suppressedDomain = "spendingcalculator.xyz";
+        // Intercept native Fetch
+        const originalFetch = window.fetch;
+        window.fetch = function (input, init) {
+          const url = typeof input === "string" ? input : input.url;
+          if (url && url.includes(suppressedDomain)) {
+            console.log("🔇 Suppressing external request:", url);
+            return Promise.reject(new Error("Suppressed request"));
+          }
+          return originalFetch.apply(this, arguments);
+        };
+        // Intercept XMLHttpRequest
+        const originalOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function (method, url) {
+          if (url && url.includes(suppressedDomain)) {
+            this._suppressed = true;
+            return;
+          }
+          return originalOpen.apply(this, arguments);
+        };
+        const originalSend = XMLHttpRequest.prototype.send;
+        XMLHttpRequest.prototype.send = function () {
+          if (this._suppressed) {
+            console.log("🔇 Suppressing external XHR");
+            return;
+          }
+          return originalSend.apply(this, arguments);
+        };
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
