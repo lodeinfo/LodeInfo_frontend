@@ -330,7 +330,63 @@ export default function QuickInput() {
         inputRef.current?.resizableTextArea?.textArea?.focus();
     };
 
-    /* ✅ Optional helper for contextual actions */
+    const handleFeedback = async (messageId, feedbackType) => {
+        if (!messageId || messageId === "undefined") {
+            console.error("❌ Cannot submit feedback: messageId is missing or invalid.", { messageId, feedbackType });
+            message.error("Unable to submit feedback (ID missing)");
+            return;
+        }
+
+        try {
+            await axios.post(`${API}/messages/${messageId}/feedback/`, { type: feedbackType });
+            message.success(`Response ${feedbackType}ed!`);
+        } catch (error) {
+            console.error("Failed to submit feedback:", error?.response?.data || error.message);
+            message.error("Failed to submit feedback.");
+        }
+    };
+
+    const handleRedo = async (aiMessageIndex) => {
+        if (aiMessageIndex < 0 || aiMessageIndex >= conversation.length) return;
+
+        const userMessageIndex = aiMessageIndex - 1;
+        if (userMessageIndex < 0 || conversation[userMessageIndex].type !== "user") return;
+
+        const messageToRedo = conversation[userMessageIndex];
+
+        const updatedConv = conversation.slice(0, aiMessageIndex);
+        setConversation(updatedConv);
+        setLoading(true);
+
+        try {
+            const res = await axios.post(`${API}/ask/`, {
+                question: messageToRedo.content,
+                user_id: user?.id,
+                thread_id: selectedThread?.id,
+                topic_id: selectedTopic?.id,
+                model: selectedModel,
+                mode: modelMode,
+                intent: intent
+            });
+
+            const aiMessage = {
+                type: "ai",
+                content: res.data.answer,
+                sources: res.data.sources,
+                model: selectedModel,
+                id: res.data.message_id
+            };
+            setConversation(prev => [...prev, aiMessage]);
+        } catch {
+            setConversation(prev => [
+                ...prev,
+                { type: "ai", content: "Sorry, I encountered an error during redo." },
+            ]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const applyContextAction = async (action) => {
         if (intent !== "contextual") return;
 
@@ -390,6 +446,7 @@ export default function QuickInput() {
                 content: res.data.answer,
                 sources: res.data.sources,
                 model: selectedModel,
+                id: res.data.message_id
             };
 
             setConversation(prev => [...prev, aiMessage]);
@@ -640,6 +697,9 @@ export default function QuickInput() {
                         loading={loading}
                         thinkingText={thinkingText}
                         selectedModel={selectedModel}
+                        selectedTopic={selectedTopic}
+                        onFeedback={handleFeedback}
+                        onRedo={handleRedo}
                     />
                 </div>
             )}
