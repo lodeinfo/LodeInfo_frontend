@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DatabaseOutlined, FileTextOutlined, RobotOutlined, CopyOutlined, CheckOutlined, LikeOutlined, DislikeOutlined, ReloadOutlined } from "@ant-design/icons";
 import ReactMarkdown from "react-markdown";
+import logo from "../assets/LodeInfo.ico";
 import modelsData from "../models_data.json";
 
 const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onRedo, messageId }) => {
@@ -28,7 +29,18 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
             style={{ position: "relative" }}
         >
             <div className="ai-header">
-                <div className="ai-avatar">LI</div>
+                <div className="ai-avatar" style={{ background: "transparent" }}>
+                    <img 
+                        src={logo} 
+                        alt="LodeInfo AI" 
+                        style={{ 
+                            width: "26px", 
+                            height: "26px", 
+                            objectFit: "contain",
+                            filter: "brightness(1.1) contrast(1.1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.1))"
+                        }} 
+                    />
+                </div>
                 <span className="ai-name">LodeInfo AI</span>
                 <span className="ai-time">
                     {createdAt

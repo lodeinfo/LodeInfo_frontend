@@ -13,23 +13,25 @@
 
 .chat-bubble-user {
     /* Background is handled by var(--user-bubble-bg) in App.css */
-    margin-bottom: 4px; 
-    min-width: 140px; /* Prevent being too compressed for short phrases */
-    max-width: 85% !important; /* Allow slightly more room than 80% */
+    margin-bottom: 4px;
+    min-width: 140px;
+    /* Prevent being too compressed for short phrases */
+    max-width: 85% !important;
+    /* Allow slightly more room than 80% */
     width: fit-content;
     text-align: left;
 }
 
-.editing-mode {
-    /* No additional padding needed here as .chat-bubble-user handles it */
-}
+
 
 .user-edit-textarea {
     background: transparent !important;
     border: none !important;
     color: inherit !important;
-    font-size: 15px !important; /* Match .chat-bubble-user from App.css */
-    line-height: 1.5 !important; /* Match .chat-bubble-user from App.css */
+    font-size: 15px !important;
+    /* Match .chat-bubble-user from App.css */
+    line-height: 1.5 !important;
+    /* Match .chat-bubble-user from App.css */
     font-weight: inherit !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -53,10 +55,11 @@
     color: #9ca3af;
     font-size: 15px;
     opacity: 0.8;
-    justify-content: flex-end; /* Align with user message (usually right-aligned) */
+    justify-content: flex-end;
+    /* Align with user message (usually right-aligned) */
 }
 
-.user-actions-row > div:hover {
+.user-actions-row>div:hover {
     color: var(--text-primary, #ffffff);
     opacity: 1;
 }
