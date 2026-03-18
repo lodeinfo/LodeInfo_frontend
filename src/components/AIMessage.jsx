@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { DatabaseOutlined, FileTextOutlined, RobotOutlined, CopyOutlined, CheckOutlined } from "@ant-design/icons";
+import { DatabaseOutlined, FileTextOutlined, RobotOutlined, CopyOutlined, CheckOutlined, LikeOutlined, DislikeOutlined, ReloadOutlined } from "@ant-design/icons";
 import ReactMarkdown from "react-markdown";
 import modelsData from "../models_data.json";
 
-const AIMessage = ({ content, sources, createdAt, selectedModel }) => {
+const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onRedo, messageId }) => {
     const modelInfo = selectedModel
         ? modelsData.find(m => m.id === selectedModel)
         : null;
 
     const [hovered, setHovered] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [liked, setLiked] = useState(false);
+    const [disliked, setDisliked] = useState(false);
 
     const handleCopy = () => {
         navigator.clipboard.writeText(content).then(() => {
@@ -98,33 +100,44 @@ const AIMessage = ({ content, sources, createdAt, selectedModel }) => {
                 )}
             </div>
 
-            {/* Hover Copy Button */}
-            {hovered && (
-                <button
-                    onClick={handleCopy}
-                    title="Copy response"
-                    style={{
-                        position: "absolute",
-                        bottom: "8px",
-                        right: "8px",
-                        background: "var(--bg-primary)",
-                        border: "1px solid var(--border-color)",
-                        borderRadius: "6px",
-                        padding: "3px 8px",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "4px",
-                        fontSize: "11px",
-                        color: copied ? "#4caf50" : "var(--text-secondary)",
-                        zIndex: 10,
-                        transition: "color 0.2s"
+            {/* Feedback & Actions Row */}
+            <div className="ai-actions-row" style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "16px",
+                marginTop: "12px",
+                paddingLeft: "12px",
+                color: "var(--text-secondary)",
+                fontSize: "18px"
+            }}>
+                <LikeOutlined 
+                    onClick={() => {
+                        setLiked(!liked);
+                        setDisliked(false);
+                        if (onFeedback) onFeedback('like');
                     }}
-                >
-                    {copied ? <CheckOutlined /> : <CopyOutlined />}
-                    {copied ? "Copied!" : "Copy"}
-                </button>
-            )}
+                    style={{ cursor: "pointer", color: liked ? "#1677ff" : "inherit", transition: "all 0.2s" }}
+                    title="Like"
+                />
+                <DislikeOutlined 
+                    onClick={() => {
+                        setDisliked(!disliked);
+                        setLiked(false);
+                        if (onFeedback) onFeedback('dislike');
+                    }}
+                    style={{ cursor: "pointer", color: disliked ? "#ff4d4f" : "inherit", transition: "all 0.2s" }}
+                    title="Dislike"
+                />
+                <ReloadOutlined 
+                    onClick={onRedo}
+                    style={{ cursor: "pointer", transition: "all 0.2s" }}
+                    title="Try again"
+                />
+                <div onClick={handleCopy} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "4px" }} title="Copy">
+                    {copied ? <CheckOutlined style={{ color: "#4caf50", fontSize: "16px" }} /> : <CopyOutlined style={{ fontSize: "18px" }} />}
+                </div>
+            </div>
+
         </div>
     );
 };

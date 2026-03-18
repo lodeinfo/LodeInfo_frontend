@@ -147,7 +147,8 @@ const ChatInterface = ({
                     type: "ai",
                     content: response.answer,
                     sources: response.sources,
-                    model: selectedModel
+                    model: selectedModel,
+                    id: response.message_id // Assuming message ID is returned for feedback
                 };
                 setConversation((prev) => [...prev, aiMessage]);
             } else {
@@ -198,7 +199,8 @@ const ChatInterface = ({
                     type: "ai",
                     content: response.answer,
                     sources: response.sources,
-                    model: selectedModel
+                    model: selectedModel,
+                    id: response.message_id
                 };
                 setConversation((prev) => [...prev, aiMessage]);
             } else {
@@ -211,6 +213,63 @@ const ChatInterface = ({
             setConversation((prev) => [
                 ...prev,
                 { type: "ai", content: "Sorry, I encountered an error." },
+            ]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleFeedback = async (messageId, feedbackType) => {
+        try {
+            await axios.post(`${API}/messages/${messageId}/feedback/`, { type: feedbackType });
+            message.success("Feedback submitted!");
+        } catch (error) {
+            console.error("Failed to submit feedback:", error);
+            message.error("Failed to submit feedback.");
+        }
+    };
+
+    const handleRedo = async (messageIndex) => {
+        if (messageIndex < 0 || messageIndex >= conversation.length) return;
+
+        const messageToRedo = conversation[messageIndex];
+        if (messageToRedo.type !== "user") return; // Only redo user messages
+
+        // Remove the message to redo and all subsequent messages
+        const updatedConv = conversation.slice(0, messageIndex);
+        setConversation(updatedConv);
+        setLoading(true);
+
+        try {
+            const response = await onAskQuestion(
+                messageToRedo.content,
+                thread?.id,
+                pickedTopicId,
+                selectedModel,
+                modelMode
+            );
+
+            if (response) {
+                const aiMessage = {
+                    type: "ai",
+                    content: response.answer,
+                    sources: response.sources,
+                    model: selectedModel,
+                    id: response.message_id
+                };
+                setConversation((prev) => [...prev, messageToRedo, aiMessage]); // Add back the user message and new AI response
+            } else {
+                setConversation((prev) => [
+                    ...prev,
+                    messageToRedo,
+                    { type: "ai", content: "Sorry, I encountered an error during redo." },
+                ]);
+            }
+        } catch (e) {
+            setConversation((prev) => [
+                ...prev,
+                messageToRedo,
+                { type: "ai", content: "Sorry, I encountered an error during redo." },
             ]);
         } finally {
             setLoading(false);
@@ -307,6 +366,8 @@ const ChatInterface = ({
                             selectedModel={selectedModel}
                             selectedTopic={topic}
                             onEditMessage={handleEditMessage}
+                            onFeedback={handleFeedback}
+                            onRedo={handleRedo}
                         />
                     )}
                 </div>
