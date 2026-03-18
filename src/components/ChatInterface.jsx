@@ -98,7 +98,8 @@ const ChatInterface = ({
                             content: msg.answer,
                             sources: msg.sources,
                             created_at: msg.created_at,
-                            model: msg.model
+                            model: msg.model,
+                            id: msg.id
                         });
                     });
                     setConversation(history);
@@ -229,14 +230,17 @@ const ChatInterface = ({
         }
     };
 
-    const handleRedo = async (messageIndex) => {
-        if (messageIndex < 0 || messageIndex >= conversation.length) return;
+    const handleRedo = async (aiMessageIndex) => {
+        if (aiMessageIndex < 0 || aiMessageIndex >= conversation.length) return;
 
-        const messageToRedo = conversation[messageIndex];
-        if (messageToRedo.type !== "user") return; // Only redo user messages
+        // The button was clicked on an AI message, so we find the user message before it
+        const userMessageIndex = aiMessageIndex - 1;
+        if (userMessageIndex < 0 || conversation[userMessageIndex].type !== "user") return;
 
-        // Remove the message to redo and all subsequent messages
-        const updatedConv = conversation.slice(0, messageIndex);
+        const messageToRedo = conversation[userMessageIndex];
+
+        // Remove the AI message and any following messages
+        const updatedConv = conversation.slice(0, aiMessageIndex);
         setConversation(updatedConv);
         setLoading(true);
 
@@ -257,18 +261,16 @@ const ChatInterface = ({
                     model: selectedModel,
                     id: response.message_id
                 };
-                setConversation((prev) => [...prev, messageToRedo, aiMessage]); // Add back the user message and new AI response
+                setConversation((prev) => [...prev, aiMessage]); // Add back only the new AI response
             } else {
                 setConversation((prev) => [
                     ...prev,
-                    messageToRedo,
                     { type: "ai", content: "Sorry, I encountered an error during redo." },
                 ]);
             }
         } catch (e) {
             setConversation((prev) => [
                 ...prev,
-                messageToRedo,
                 { type: "ai", content: "Sorry, I encountered an error during redo." },
             ]);
         } finally {

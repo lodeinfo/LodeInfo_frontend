@@ -104,37 +104,41 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
             <div className="ai-actions-row" style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "16px",
-                marginTop: "12px",
-                paddingLeft: "12px",
-                color: "var(--text-secondary)",
-                fontSize: "18px"
+                gap: "14px",
+                marginTop: "18px",
+                paddingLeft: "38px", // Matches avatar/content alignment
+                color: "#9ca3af", // Neutral grey
+                fontSize: "15px",
+                opacity: 0.8
             }}>
                 <LikeOutlined 
                     onClick={() => {
                         setLiked(!liked);
                         setDisliked(false);
-                        if (onFeedback) onFeedback('like');
+                        if (onFeedback) onFeedback(messageId, 'like');
                     }}
                     style={{ cursor: "pointer", color: liked ? "#1677ff" : "inherit", transition: "all 0.2s" }}
+                    className="feedback-icon"
                     title="Like"
                 />
                 <DislikeOutlined 
                     onClick={() => {
                         setDisliked(!disliked);
                         setLiked(false);
-                        if (onFeedback) onFeedback('dislike');
+                        if (onFeedback) onFeedback(messageId, 'dislike');
                     }}
                     style={{ cursor: "pointer", color: disliked ? "#ff4d4f" : "inherit", transition: "all 0.2s" }}
+                    className="feedback-icon"
                     title="Dislike"
                 />
                 <ReloadOutlined 
                     onClick={onRedo}
                     style={{ cursor: "pointer", transition: "all 0.2s" }}
+                    className="feedback-icon"
                     title="Try again"
                 />
                 <div onClick={handleCopy} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "4px" }} title="Copy">
-                    {copied ? <CheckOutlined style={{ color: "#4caf50", fontSize: "16px" }} /> : <CopyOutlined style={{ fontSize: "18px" }} />}
+                    {copied ? <CheckOutlined style={{ color: "#4caf50", fontSize: "14px" }} /> : <CopyOutlined style={{ fontSize: "15px" }} />}
                 </div>
             </div>
 
