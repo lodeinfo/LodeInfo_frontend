@@ -34,7 +34,7 @@ const ChatInterface = ({
     const [conversation, setConversation] = useState([]);
     const [loading, setLoading] = useState(false);
     const [uploading, setUploading] = useState(false);
-    const [pickedTopicId, setPickedTopicId] = useState(thread?.topic || topic?.id || null);
+    const [pickedTopicId, setPickedTopicId] = useState(thread?.topic || null);
     const [thinkingText, setThinkingText] = useState("Thinking");
     const [modalOpen, setModalOpen] = useState(false);
     const [newTopicName, setNewTopicName] = useState("");
@@ -63,8 +63,8 @@ const ChatInterface = ({
     }, [loading]);
 
     useEffect(() => {
-        setPickedTopicId(thread?.topic || topic?.id || null);
-    }, [thread, topic]);
+        setPickedTopicId(thread?.topic || null);
+    }, [thread]);
 
     useEffect(() => {
         if (topicModalTrigger > 0) {
