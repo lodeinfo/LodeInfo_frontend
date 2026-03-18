@@ -12,11 +12,11 @@
     .sidebar-flex {
         height: 100%;
     }
-    
+
     .gemini-sider {
         overflow: visible !important;
     }
-    
+
     .gemini-sider .ant-layout-sider-children {
         overflow: visible !important;
     }
@@ -35,16 +35,11 @@
         transition: all 0.3s ease;
     }
 
-    .sidebar-branding-wrapper.branding-expanded {
-        padding: 18px 24px;
-        align-items: flex-start;
-        width: 100%;
-        transition: padding 0.3s ease;
-    }
-
+    .sidebar-branding-wrapper.branding-expanded,
     .sidebar-branding-wrapper.branding-collapsed {
-        padding: 18px 0;
-        align-items: center;
+        padding: 18px 24px;
+        /* 24px padding + 12px (half 24px logo) = 36px center anchor */
+        align-items: flex-start;
         width: 100%;
         transition: padding 0.3s ease;
     }
@@ -55,20 +50,23 @@
         width: 100%;
         margin-bottom: 8px;
         min-height: 24px;
-        overflow: visible !important; /* Allow spill out when collapsed */
+        overflow: visible !important;
+        /* Allow spill out when collapsed */
         flex-wrap: nowrap;
-        gap: 15px; /* Increased spacing as requested */
+        gap: 15px;
+        /* Increased spacing as requested */
     }
 
     .sidebar-logo-container {
-        justify-content: center !important; /* Center logo in collapsed state */
+        justify-content: flex-start !important;
     }
 
     .logo-text {
         font-weight: 700;
         font-size: 22px;
         white-space: nowrap;
-        overflow: visible !important; /* Allow spill out */
+        overflow: visible !important;
+        /* Allow spill out */
         transition: all 0.3s ease;
         color: var(--text-primary);
         flex-shrink: 0;
@@ -86,7 +84,8 @@
         max-width: 200px !important;
         display: inline-block !important;
         visibility: visible !important;
-        transform: translateX(0); /* Ensure it stays next to logo */
+        transform: translateX(0);
+        /* Ensure it stays next to logo */
     }
 
     .menu-toggle-btn {
@@ -102,7 +101,8 @@
 
     .menu-toggle-btn {
         margin-top: 4px;
-        margin-left: 0 !important; /* Perfect center alignment */
+        margin-left: -8px !important;
+        /* Adjust to stay centered with 24px logo (24 padding + 20 half-width - 8 offset = 36) */
         transition: margin 0.3s ease;
     }
 
