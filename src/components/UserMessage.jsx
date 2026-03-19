@@ -8,6 +8,11 @@ const UserMessage = ({ content, index, onEdit, onUpdate }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editContent, setEditContent] = useState(content);
 
+    // Ensure editContent is synced if content prop changes
+    React.useEffect(() => {
+        setEditContent(content);
+    }, [content]);
+
     const handleCopy = (e) => {
         e.stopPropagation();
         navigator.clipboard.writeText(content).then(() => {
