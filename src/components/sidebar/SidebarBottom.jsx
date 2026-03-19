@@ -3,7 +3,8 @@ import { Dropdown } from "antd";
 import { 
     LogoutOutlined, 
     SunOutlined, 
-    MoonOutlined
+    MoonOutlined,
+    UserOutlined
 } from "@ant-design/icons";
 import { useTheme } from "../../contexts/ThemeContext";
 
@@ -12,26 +13,11 @@ function SidebarBottom({ collapsed, user, setSettingsOpen, setProfileOpen, logou
 
     const menuItems = [
         {
-            key: 'user-info',
-            label: (
-                <div className="menu-user-header">
-                    <div className="user-avatar mini-avatar">
-                        {user?.profile_picture ? (
-                            <img src={user.profile_picture} alt="Avatar" className="avatar-img" />
-                        ) : (
-                            user?.first_name
-                                ? `${user.first_name.charAt(0).toUpperCase()}${user.last_name.charAt(0).toUpperCase()}`
-                                : (user?.email ? user.email.charAt(0).toUpperCase() : 'U')
-                        )}
-                    </div>
-                    <div className="user-info-text">
-                        <div className="user-info-name">{user?.first_name ? `${user.first_name} ${user.last_name || ''}` : 'User'}</div>
-                        <div className="user-info-email">{user?.email || 'user@example.com'}</div>
-                    </div>
-                </div>
-            ),
+            key: 'profile',
+            label: 'Profile',
+            icon: <UserOutlined />,
             onClick: () => setProfileOpen(true),
-            className: 'user-info-item clickable-user-info'
+            className: 'dropdown-menu-item'
         },
         { type: 'divider' },
         {

@@ -455,7 +455,7 @@
         border: 1px solid var(--border-color) !important;
         border-radius: 14px !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-        padding: 8px 16px !important;
+        padding: 6px !important;
         /* Total left offset 28px matches sidebar (16px menu + 12px item padding) */
         width: 236px !important;
         /* Exactly matching sidebar card width (260px sidebar - 24px margins) */
