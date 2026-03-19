@@ -256,7 +256,8 @@
         font-size: 14px;
         cursor: pointer;
         flex-shrink: 0;
-        overflow: hidden; /* Ensure image is clipped to circle */
+        overflow: hidden;
+        /* Ensure image is clipped to circle */
     }
 
     .avatar-img {
@@ -454,15 +455,20 @@
         border: 1px solid var(--border-color) !important;
         border-radius: 14px !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-        padding: 8px 16px !important; /* Total left offset 28px matches sidebar (16px menu + 12px item padding) */
-        width: 236px !important; /* Exactly matching sidebar card width (260px sidebar - 24px margins) */
+        padding: 8px 16px !important;
+        /* Total left offset 28px matches sidebar (16px menu + 12px item padding) */
+        width: 236px !important;
+        /* Exactly matching sidebar card width (260px sidebar - 24px margins) */
         min-width: 0 !important;
-        overflow: hidden !important; /* Remove scrollbar */
-        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        overflow: hidden !important;
+        /* Remove scrollbar */
+        scrollbar-width: none;
+        /* Hide scrollbar for Firefox */
     }
 
     .chatgpt-profile-dropdown .ant-dropdown-menu::-webkit-scrollbar {
-        display: none; /* Hide scrollbar for Chrome/Safari */
+        display: none;
+        /* Hide scrollbar for Chrome/Safari */
     }
 
     .user-info-item {
@@ -480,9 +486,9 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 10px 12px !important; /* Unified with other menu items */
+        padding: 12px !important;
+        /* Matches dropdown-menu-item padding */
         width: 100%;
-        box-sizing: border-box;
     }
 
     .mini-avatar {
@@ -494,10 +500,10 @@
     .user-info-text {
         display: flex;
         flex-direction: column;
-        line-height: 1.3;
+        line-height: 1.2;
         overflow: hidden;
+        /* Ensure ellipsis works for children */
         min-width: 0;
-        flex: 1; /* Allow to take remaining space for truncation */
     }
 
     .user-info-name {
@@ -604,7 +610,8 @@
     .large-avatar {
         width: 100%;
         height: 100%;
-        background-color: #94b1d3; /* Matched current user avatar color */
+        background-color: #94b1d3;
+        /* Matched current user avatar color */
         color: white;
         border-radius: 50%;
         display: flex;
@@ -613,7 +620,8 @@
         font-size: 40px;
         font-weight: 500;
         position: relative;
-        overflow: hidden; /* Ensure image stays in circle */
+        overflow: hidden;
+        /* Ensure image stays in circle */
     }
 
     .profile-preview-img {
@@ -628,12 +636,14 @@
         right: 5px;
         width: 32px;
         height: 32px;
-        background: var(--bg-primary); /* Theme-aware background */
+        background: var(--bg-primary);
+        /* Theme-aware background */
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--text-secondary); /* Theme-aware color */
+        color: var(--text-secondary);
+        /* Theme-aware color */
         font-size: 16px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         cursor: pointer;
@@ -690,9 +700,11 @@
     }
 
     .profile-save-btn {
-        background: var(--text-primary) !important; /* Theme-aware black in light mode, light in dark */
+        background: var(--text-primary) !important;
+        /* Theme-aware black in light mode, light in dark */
         border: none !important;
-        color: var(--bg-primary) !important; /* Text color matches theme background */
+        color: var(--bg-primary) !important;
+        /* Text color matches theme background */
         padding: 6px 24px !important;
         height: auto !important;
         font-weight: 500 !important;
