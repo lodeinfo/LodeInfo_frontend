@@ -18,7 +18,7 @@ const API = import.meta.env.VITE_API_BASE_URL;
 
 function MainLayout() {
     const { theme: currentTheme } = useTheme();
-    const { logout, user } = useAuth();
+    const { logout, user, updateUser } = useAuth();
 
     const [topics, setTopics] = useState([]);
     const [threads, setThreads] = useState([]);
