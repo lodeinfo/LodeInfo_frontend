@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Modal, Input, Button, message } from 'antd';
-import { CameraOutlined, CloseOutlined } from '@ant-design/icons';
+import { CameraOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { Modal, Input, Button, message, Dropdown } from 'antd';
 import '../Styles/MainLayout.css';
 
 function ProfileModal({ open, onClose, user, onSave }) {
@@ -50,6 +50,22 @@ function ProfileModal({ open, onClose, user, onSave }) {
         }
     };
 
+    const photoMenuItems = [
+        {
+            key: 'change',
+            label: 'Change photo',
+            icon: <EditOutlined />,
+            onClick: triggerFileInput
+        },
+        {
+            key: 'remove',
+            label: 'Remove photo',
+            icon: <DeleteOutlined />,
+            danger: true,
+            onClick: removeImage
+        }
+    ];
+
     return (
         <Modal
             title={null}
@@ -68,21 +84,24 @@ function ProfileModal({ open, onClose, user, onSave }) {
 
                 <div className="profile-avatar-container">
                     <div className="avatar-wrapper">
-                        <div className="large-avatar" onClick={triggerFileInput}>
+                        <div className="large-avatar" onClick={!profileImage ? triggerFileInput : undefined}>
                             {profileImage ? (
                                 <img src={profileImage} alt="Profile" className="profile-preview-img" />
                             ) : (
                                 displayName.charAt(0).toUpperCase() || 'U'
                             )}
                         </div>
-                        {profileImage && (
-                            <div className="avatar-remove-icon" onClick={removeImage}>
-                                <CloseOutlined />
+                        {profileImage ? (
+                            <Dropdown menu={{ items: photoMenuItems }} trigger={['click']} placement="bottomRight">
+                                <div className="avatar-upload-icon clickable-photo-menu">
+                                    <CameraOutlined />
+                                </div>
+                            </Dropdown>
+                        ) : (
+                            <div className="avatar-upload-icon" onClick={triggerFileInput}>
+                                <CameraOutlined />
                             </div>
                         )}
-                        <div className="avatar-upload-icon" onClick={triggerFileInput}>
-                            <CameraOutlined />
-                        </div>
                     </div>
                     <input 
                         type="file" 

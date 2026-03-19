@@ -637,27 +637,9 @@
         z-index: 2;
     }
 
-    .avatar-remove-icon {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        width: 24px;
-        height: 24px;
-        background: #ff4d4f; /* Error/Red color for removal */
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-        z-index: 3;
-        transition: transform 0.2s ease;
-    }
-
-    .avatar-remove-icon:hover {
-        transform: scale(1.1);
+    .clickable-photo-menu:hover {
+        background: var(--bg-hover) !important;
+        transform: scale(1.05);
     }
 
     .profile-form-group {
