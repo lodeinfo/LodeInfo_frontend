@@ -244,8 +244,8 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background: #da4a19; /* ChatGPT-style orange */
-        color: #fff;
+        background: var(--user-bubble-bg); /* Match user prompt box color */
+        color: var(--text-primary); /* Use theme text color for contrast */
         display: flex;
         align-items: center;
         justify-content: center;
