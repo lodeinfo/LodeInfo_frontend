@@ -48,8 +48,19 @@ export const AuthProvider = ({ children }) => {
         return saved;
     });
 
+    const getPersistentUser = (userData) => {
+        if (!userData || !userData.email) return userData;
+        const persistentPics = JSON.parse(localStorage.getItem("persistent_profile_pics") || "{}");
+        const cachedPic = persistentPics[userData.email];
+        if (cachedPic && !userData.profile_picture) {
+            return { ...userData, profile_picture: cachedPic };
+        }
+        return userData;
+    };
+
     const [user, setUser] = useState(() => {
-        return JSON.parse(localStorage.getItem("userDetails") || "null");
+        const rawUser = JSON.parse(localStorage.getItem("userDetails") || "null");
+        return getPersistentUser(rawUser);
     });
 
     useEffect(() => {
@@ -93,8 +104,6 @@ export const AuthProvider = ({ children }) => {
                 setIsLoading(false);
             }
         };
-
-        // Run check once on mount or when login state changes
         checkToken();
     }, [isLoggedIn]);
 
@@ -104,18 +113,18 @@ export const AuthProvider = ({ children }) => {
         const hasLogoutSuccess = params.get("logout") === "success";
 
         if (hasLoginSuccess || hasLogoutSuccess) {
-            // Clear URL params immediately to prevent sticky behavior
+            // Clear URL params immediately
             const url = new URL(window.location);
             url.searchParams.delete("login");
             url.searchParams.delete("logout");
             url.searchParams.delete("auth_data");
-            url.searchParams.delete("user_data");    // Cleanup old param just in case
+            url.searchParams.delete("user_data");
             window.history.replaceState({}, document.title, url.pathname);
 
             if (hasLoginSuccess) {
                 message.success("Logged in successfully");
-                // Update state if user data was refreshed from URL
-                setUser(JSON.parse(localStorage.getItem("userDetails") || "null"));
+                const rawUser = JSON.parse(localStorage.getItem("userDetails") || "null");
+                setUser(getPersistentUser(rawUser));
             } else if (hasLogoutSuccess) {
                 message.success("Logged out successfully");
                 setUser(null);
@@ -125,20 +134,18 @@ export const AuthProvider = ({ children }) => {
 
     const login = (userData) => {
         setIsLoggedIn(true);
-        setUser(userData);
+        const persistentUser = getPersistentUser(userData);
+        setUser(persistentUser);
         localStorage.setItem("isLoggedIn", "true");
-        if (userData) {
-            localStorage.setItem("userDetails", JSON.stringify(userData));
+        if (persistentUser) {
+            localStorage.setItem("userDetails", JSON.stringify(persistentUser));
         }
     };
 
     const logout = () => {
-        // Clear local storage first
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("userDetails");
         localStorage.removeItem("authTokens");
-
-        // Redirect to Backend -> Simplified logout flow
         const API = import.meta.env.VITE_API_BASE_URL;
         window.location.href = `${API}/auth/logout/`;
     };
@@ -147,6 +154,19 @@ export const AuthProvider = ({ children }) => {
         setUser(prev => {
             const newUser = { ...prev, ...updatedData };
             localStorage.setItem("userDetails", JSON.stringify(newUser));
+            
+            // Persist profile picture if provided
+            if (updatedData.profile_picture && prev?.email) {
+                const persistentPics = JSON.parse(localStorage.getItem("persistent_profile_pics") || "{}");
+                persistentPics[prev.email] = updatedData.profile_picture;
+                localStorage.setItem("persistent_profile_pics", JSON.stringify(persistentPics));
+            } else if (updatedData.profile_picture === null && prev?.email) {
+                // Handle removal
+                const persistentPics = JSON.parse(localStorage.getItem("persistent_profile_pics") || "{}");
+                delete persistentPics[prev.email];
+                localStorage.setItem("persistent_profile_pics", JSON.stringify(persistentPics));
+            }
+            
             return newUser;
         });
     };
