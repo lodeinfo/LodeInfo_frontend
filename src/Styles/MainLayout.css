@@ -652,7 +652,7 @@
     }
 
     .profile-input-field {
-        background: var(--bg-secondary) !important;
+        background: var(--bg-input) !important;
         border: 1px solid var(--border-color) !important;
         border-radius: 10px !important;
         padding: 10px 14px !important;

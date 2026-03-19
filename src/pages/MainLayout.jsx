@@ -221,27 +221,6 @@ function MainLayout() {
 
     return (
         <>
-            <SettingsModal
-                open={settingsOpen}
-                onClose={() => setSettingsOpen(false)}
-                onLogout={logout}
-            />
-
-            {/* Added ProfileModal component */}
-            <ProfileModal
-                open={isProfileModalOpen}
-                onClose={() => setIsProfileModalOpen(false)}
-                user={user}
-                onSave={(data) => {
-                    updateUser({
-                        first_name: data.displayName.split(' ')[0] || '',
-                        last_name: data.displayName.split(' ').slice(1).join(' ') || '',
-                        username: data.username, // Save as username now, not overwriting email
-                        profile_picture: data.profileImage
-                    });
-                }}
-            />
-
             <ConfigProvider
                 theme={{
                     token: {
@@ -254,6 +233,25 @@ function MainLayout() {
                         : antTheme.defaultAlgorithm,
                 }}
             >
+                <SettingsModal
+                    open={settingsOpen}
+                    onClose={() => setSettingsOpen(false)}
+                    onLogout={logout}
+                />
+
+                <ProfileModal
+                    open={isProfileModalOpen}
+                    onClose={() => setIsProfileModalOpen(false)}
+                    user={user}
+                    onSave={(data) => {
+                        updateUser({
+                            first_name: data.displayName.split(' ')[0] || '',
+                            last_name: data.displayName.split(' ').slice(1).join(' ') || '',
+                            username: data.username,
+                            profile_picture: data.profileImage
+                        });
+                    }}
+                />
                 <Layout className="main-layout">
                     {/* ✅ SIDEBAR WRAPPER & OVERLAY ADDED FOR MOBILE BEHAVIOR */}
                     {!collapsed && <div className="sidebar-overlay" onClick={() => setCollapsed(true)} />}
