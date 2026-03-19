@@ -1,18 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Input, Button, message } from 'antd';
 import { CameraOutlined } from '@ant-design/icons';
-import '../Styles/MainLayout.css'; // Reusing styles
+import '../Styles/MainLayout.css';
 
 function ProfileModal({ open, onClose, user }) {
     const [displayName, setDisplayName] = useState('');
     const [username, setUsername] = useState('');
+    const [profileImage, setProfileImage] = useState(null);
+    const fileInputRef = useRef(null);
 
     useEffect(() => {
         if (open && user) {
             setDisplayName(user.first_name ? `${user.first_name} ${user.last_name || ''}`.trim() : '');
             setUsername(user.email || '');
+            setProfileImage(user.profile_picture || null); // Theoretical user property
         }
     }, [open, user]);
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfileImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const triggerFileInput = () => {
+        fileInputRef.current.click();
+    };
 
     const handleSave = () => {
         // Placeholder for save logic
@@ -37,12 +55,23 @@ function ProfileModal({ open, onClose, user }) {
                 </div>
 
                 <div className="profile-avatar-container">
-                    <div className="large-avatar">
-                        {displayName.charAt(0).toUpperCase() || 'U'}
+                    <div className="large-avatar" onClick={triggerFileInput} style={{ cursor: 'pointer' }}>
+                        {profileImage ? (
+                            <img src={profileImage} alt="Profile" className="profile-preview-img" />
+                        ) : (
+                            displayName.charAt(0).toUpperCase() || 'U'
+                        )}
                         <div className="avatar-upload-icon">
                             <CameraOutlined />
                         </div>
                     </div>
+                    <input 
+                        type="file" 
+                        ref={fileInputRef} 
+                        style={{ display: 'none' }} 
+                        accept="image/*"
+                        onChange={handleFileChange}
+                    />
                 </div>
 
                 <div className="profile-form-group">
@@ -66,7 +95,7 @@ function ProfileModal({ open, onClose, user }) {
                 </div>
 
                 <p className="profile-disclaimer">
-                    Your profile helps people recognize you. Your name and username are also used in the Sora app.
+                    Your profile helps people recognize you.
                 </p>
 
                 <div className="profile-modal-footer">
