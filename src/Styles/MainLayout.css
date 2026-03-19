@@ -449,6 +449,12 @@
         padding: 8px 16px !important; /* Total left offset 28px matches sidebar (16px menu + 12px item padding) */
         width: 236px !important; /* Exactly matching sidebar card width (260px sidebar - 24px margins) */
         min-width: 0 !important;
+        overflow: hidden !important; /* Remove scrollbar */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+    }
+
+    .chatgpt-profile-dropdown .ant-dropdown-menu::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome/Safari */
     }
 
     .menu-user-header {
