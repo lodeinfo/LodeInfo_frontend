@@ -93,7 +93,7 @@ function ProfileModal({ open, onClose, user, onSave }) {
                         </div>
                         {profileImage ? (
                             <Dropdown menu={{ items: photoMenuItems }} trigger={['click']} placement="bottomRight">
-                                <div className="avatar-upload-icon clickable-photo-menu">
+                                <div className="avatar-upload-icon">
                                     <CameraOutlined />
                                 </div>
                             </Dropdown>

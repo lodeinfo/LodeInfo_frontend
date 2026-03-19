@@ -637,10 +637,7 @@
         z-index: 2;
     }
 
-    .clickable-photo-menu:hover {
-        background: var(--bg-hover) !important;
-        transform: scale(1.05);
-    }
+
 
     .profile-form-group {
         margin-bottom: 20px;
