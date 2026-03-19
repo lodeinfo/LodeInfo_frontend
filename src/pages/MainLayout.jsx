@@ -4,7 +4,9 @@ import axios from "axios";
 
 import ChatInterface from "../components/ChatInterface";
 import SettingsModal from "../components/SettingsModal";
+import ProfileModal from "../components/ProfileModal";
 import Sidebar from "../components/sidebar/Sidebar";
+import SearchResults from "../components/SearchResults"; // Added SearchResults import
 
 import { useTheme } from "../contexts/ThemeContext";
 import { useAuth } from "../contexts/AuthContext";
@@ -26,6 +28,7 @@ function MainLayout() {
 
     const [collapsed, setCollapsed] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false); // Added isProfileModalOpen state
     const [topicModalTrigger, setTopicModalTrigger] = useState(0);
     const [modelPickerTrigger, setModelPickerTrigger] = useState(0);
 
@@ -225,6 +228,13 @@ function MainLayout() {
                 onLogout={logout}
             />
 
+            {/* Added ProfileModal component */}
+            <ProfileModal
+                open={isProfileModalOpen}
+                onClose={() => setIsProfileModalOpen(false)}
+                user={user}
+            />
+
             <ConfigProvider
                 theme={{
                     token: {
@@ -258,6 +268,7 @@ function MainLayout() {
                             searchResults={searchResults}
                             searchLoading={searchLoading}
                             setSettingsOpen={setSettingsOpen}
+                            setProfileOpen={setIsProfileModalOpen}
                             setTopicModalTrigger={setTopicModalTrigger}
                             user={user}
                             logout={logout}

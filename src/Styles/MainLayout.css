@@ -459,12 +459,13 @@
 
     .user-info-item {
         padding: 0 !important;
-        cursor: default !important;
+        cursor: pointer !important;
         background: transparent !important;
+        transition: background 0.2s ease !important;
     }
 
-    .user-info-item:hover {
-        background: transparent !important;
+    .user-info-item.clickable-user-info:hover {
+        background-color: var(--bg-hover) !important;
     }
 
     .menu-user-header {
@@ -554,4 +555,121 @@
         background-color: var(--border-color) !important;
         opacity: 0.5;
         margin: 8px 0 !important;
+    }
+
+    /* ── Edit Profile Modal Styles ── */
+    .profile-edit-modal .ant-modal-content {
+        background-color: var(--bg-primary) !important;
+        border-radius: 20px !important;
+        padding: 24px !important;
+        color: var(--text-primary) !important;
+    }
+
+    .profile-modal-header {
+        margin-bottom: 24px;
+        border-bottom: none !important;
+    }
+
+    .profile-modal-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .profile-avatar-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .large-avatar {
+        width: 120px;
+        height: 120px;
+        background-color: #da4a19; /* ChatGPT/Sora Orange from screenshot */
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: 500;
+        position: relative;
+    }
+
+    .avatar-upload-icon {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 32px;
+        height: 32px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        border: 1px solid #eee;
+    }
+
+    .profile-form-group {
+        margin-bottom: 20px;
+    }
+
+    .profile-input-label {
+        display: block;
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    .profile-input-field {
+        background: var(--bg-secondary) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 10px !important;
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+        color: var(--text-primary) !important;
+    }
+
+    .profile-disclaimer {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        margin-top: 10px;
+        margin-bottom: 24px;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .profile-modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .profile-cancel-btn {
+        background: transparent !important;
+        border: 1px solid var(--border-color) !important;
+        color: var(--text-primary) !important;
+        padding: 6px 20px !important;
+        height: auto !important;
+        font-weight: 500 !important;
+    }
+
+    .profile-save-btn {
+        background: #000 !important; /* Premium Black Button */
+        border: none !important;
+        color: #fff !important;
+        padding: 6px 24px !important;
+        height: auto !important;
+        font-weight: 500 !important;
+    }
+
+    .profile-save-btn:hover {
+        opacity: 0.8 !important;
     }

@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useTheme } from "../../contexts/ThemeContext";
 
-function SidebarBottom({ collapsed, user, logout }) {
+function SidebarBottom({ collapsed, user, setSettingsOpen, setProfileOpen, logout }) {
     const { theme, toggleTheme } = useTheme();
 
     const menuItems = [
@@ -26,8 +26,8 @@ function SidebarBottom({ collapsed, user, logout }) {
                     </div>
                 </div>
             ),
-            disabled: true,
-            className: 'user-info-item'
+            onClick: () => setProfileOpen(true),
+            className: 'user-info-item clickable-user-info'
         },
         { type: 'divider' },
         {
