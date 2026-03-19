@@ -31,9 +31,14 @@ export const ThemeProvider = ({ children }) => {
         document.documentElement.setAttribute('data-theme', theme);
         // Save to localStorage
         localStorage.setItem('app-theme', theme);
+    }, [theme]);
 
-        // Update favicon dynamically
+    useEffect(() => {
+        const matcher = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Update favicon dynamically based on SYSTEM theme
         const updateFavicon = () => {
+            const isSystemDark = matcher.matches;
             const link = document.querySelector("link[rel~='icon']");
             if (!link) return;
 
@@ -48,9 +53,9 @@ export const ThemeProvider = ({ children }) => {
                 
                 const imageData = ctx.getImageData(0, 0, 32, 32);
                 const data = imageData.data;
-                const r = theme === 'dark' ? 255 : 0;
-                const g = theme === 'dark' ? 255 : 0;
-                const b = theme === 'dark' ? 255 : 0;
+                const r = isSystemDark ? 255 : 0;
+                const g = isSystemDark ? 255 : 0;
+                const b = isSystemDark ? 255 : 0;
 
                 for (let i = 0; i < data.length; i += 4) {
                     // If pixel has some opacity, force it to theme color
@@ -64,8 +69,11 @@ export const ThemeProvider = ({ children }) => {
                 link.href = canvas.toDataURL('image/png');
             };
         };
+
         updateFavicon();
-    }, [theme]);
+        matcher.addEventListener('change', updateFavicon);
+        return () => matcher.removeEventListener('change', updateFavicon);
+    }, []);
 
     const toggleTheme = () => {
         setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
