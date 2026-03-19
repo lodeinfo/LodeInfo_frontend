@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import message from "antd/es/message";
-import Spin from "antd/es/spin";
+import logo from "../assets/LodeInfo.ico";
 
 const AuthContext = createContext();
 
@@ -174,9 +174,24 @@ export const AuthProvider = ({ children }) => {
     if (isLoading) {
         return (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#f5f2eb' }}>
-                <Spin size="large" tip="Verifying session...">
-                    <div style={{ padding: 50 }} />
-                </Spin>
+                <style>
+                    {`
+                        @keyframes pulse-loading {
+                            0% { transform: scale(0.95); opacity: 0.7; }
+                            50% { transform: scale(1.05); opacity: 1; }
+                            100% { transform: scale(0.95); opacity: 0.7; }
+                        }
+                    `}
+                </style>
+                <img 
+                    src={logo} 
+                    alt="Loading..." 
+                    style={{ 
+                        width: '64px', 
+                        height: '64px', 
+                        animation: 'pulse-loading 1.5s ease-in-out infinite' 
+                    }} 
+                />
             </div>
         );
     }
