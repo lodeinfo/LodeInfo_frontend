@@ -15,10 +15,12 @@ export const ThemeProvider = ({ children }) => {
         // Check localStorage first
         const savedTheme = localStorage.getItem('app-theme');
         if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
             return savedTheme;
         }
         
-        return 'light'; // Default to white theme
+        document.documentElement.setAttribute('data-theme', 'light');
+        return 'light'; // Default to light theme
     });
 
     useEffect(() => {
