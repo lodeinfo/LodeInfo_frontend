@@ -55,7 +55,7 @@ const LoginPage = () => {
 
                     <Divider plain className="login-divider">OR</Divider>
 
-                    <Space direction="vertical" style={{ width: "100%" }} size="small">
+                    <Space orientation="vertical" style={{ width: "100%" }} size="small">
                         <Button
                             block
                             size="large"

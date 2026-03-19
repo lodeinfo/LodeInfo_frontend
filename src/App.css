@@ -1,6 +1,24 @@
 /* Google Fonts import if possible, otherwise rely on system fonts that look similar */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap');
 
+/* === Default (Light) Variables on :root ===
+   These apply BEFORE data-theme is set by React (i.e. on first paint).
+   This prevents dark flash on page load. */
+:root {
+    --bg-primary: #f5f2eb;
+    --bg-input: #ffffff;
+    --bg-hover: rgba(0, 0, 0, 0.04);
+    --bg-sidebar: transparent;
+    --bg-active: rgba(0, 0, 0, 0.08);
+    --text-primary: #1f1f1f;
+    --text-secondary: #444746;
+    --text-tertiary: #5f6368;
+    --accent-blue: #1a73e8;
+    --border-color: #e0e0e0;
+    --ai-card-bg: #ffffff;
+    --user-bubble-bg: #e7edf5;
+}
+
 /* Light Theme Variables */
 [data-theme="light"] {
     --bg-primary: #f5f2eb;
