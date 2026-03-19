@@ -31,12 +31,21 @@
 }
 
 .login-logo-container {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 20px;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+}
+
+.login-brand-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: -0.3px;
 }
 
 .login-logo-img {

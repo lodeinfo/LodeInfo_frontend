@@ -49,9 +49,10 @@ const LoginPage = () => {
                     <div className="login-header">
                         <div className="login-logo-container">
                             <img src={logo} alt="LodeInfo Logo" className="login-logo-img" />
+                            <span className="login-brand-name">LodeInfo</span>
                         </div>
                         <Title level={2} className="login-heading">Welcome back</Title>
-                        <Text className="login-subheading">Sign in to LodeInfo to continue</Text>
+                        <Text className="login-subheading">Sign in to continue</Text>
                     </div>
 
                     <Space orientation="vertical" size="middle" style={{ width: "100%", marginTop: 24 }}>
