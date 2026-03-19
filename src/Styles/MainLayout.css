@@ -446,7 +446,7 @@
         border: 1px solid var(--border-color) !important;
         border-radius: 14px !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-        padding: 16px 8px !important; /* Total left offset matches sidebar 28px (16px menu + 12px item padding) */
+        padding: 8px 16px !important; /* Total left offset matches sidebar 28px (16px menu padding + 12px item padding) */
         min-width: 240px !important;
     }
 
