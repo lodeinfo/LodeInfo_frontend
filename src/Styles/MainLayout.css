@@ -457,12 +457,21 @@
         display: none; /* Hide scrollbar for Chrome/Safari */
     }
 
+    .user-info-item {
+        padding: 0 !important;
+        cursor: default !important;
+        background: transparent !important;
+    }
+
+    .user-info-item:hover {
+        background: transparent !important;
+    }
+
     .menu-user-header {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 8px 12px;
-        /* Matched to menu items */
+        padding: 12px !important; /* Matches dropdown-menu-item padding */
         width: 100%;
     }
 
