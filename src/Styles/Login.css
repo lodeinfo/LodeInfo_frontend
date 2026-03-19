@@ -1,40 +1,29 @@
+/* ============================================================
+   LOGIN PAGE - Always Light Theme
+   The login page is always displayed in light mode.
+   ConfigProvider in LoginPage.jsx forces Ant Design light mode.
+   ============================================================ */
+
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* Creamy background of the main app */
-  background-color: #f5f2eb; 
-  background-color: var(--bg-primary, #f5f2eb); 
+  /* Always creamy - never dark */
+  background-color: #f5f2eb !important;
   font-family: 'Outfit', sans-serif;
-  transition: background-color 0.3s ease;
-}
-
-[data-theme="dark"] .login-container {
-  background-color: #1f1f1f;
-  background-color: var(--bg-primary, #1f1f1f);
 }
 
 .login-card {
   width: 100%;
   max-width: 420px;
+  /* Always white card */
   background-color: #ffffff !important;
-  background-color: var(--bg-input, #ffffff) !important;
   border: 1px solid #e5e7eb !important;
-  border: 1px solid var(--border-color, #e0e0e0) !important;
   border-radius: 28px !important;
   padding: 52px 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03) !important;
-  transition: all 0.3s ease !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
   text-align: center;
-}
-
-[data-theme="dark"] .login-card {
-  background-color: #2f2f2f !important;
-  background-color: var(--bg-input, #2f2f2f) !important;
-  border-color: #404040 !important;
-  border-color: var(--border-color, #404040) !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
 }
 
 .login-header {
@@ -42,8 +31,8 @@
 }
 
 .login-logo-container {
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   margin: 0 auto 20px;
   display: flex;
   align-items: center;
@@ -56,66 +45,46 @@
   object-fit: contain;
 }
 
-/* Specific Logo filter for dark mode visibility */
-[data-theme="dark"] .login-logo-img {
-    filter: invert(1) brightness(1.2);
-}
-
 .login-heading {
   margin-bottom: 12px !important;
-  color: #374151 !important; /* Soft dark grey instead of black */
-  color: var(--text-primary, #374151) !important;
+  color: #374151 !important;
   font-weight: 600 !important;
-  font-size: 30px !important;
-  letter-spacing: -1px;
-}
-
-[data-theme="dark"] .login-heading {
-    color: #ffffff !important;
+  font-size: 28px !important;
+  letter-spacing: -0.5px;
 }
 
 .login-subheading {
-  color: #6b7280 !important; /* Muted grey */
-  color: var(--text-secondary, #6b7280) !important;
+  color: #6b7280 !important;
   font-size: 15px;
   line-height: 1.5;
-  opacity: 0.85;
 }
 
-[data-theme="dark"] .login-subheading {
-    color: #e3e3e3 !important;
-}
-
-/* Primary "Continue with Email" Button - Changed from black to branded blue */
+/* Primary Button - Accent Blue */
 .login-btn-primary {
   height: 54px !important;
-  background-color: #1a73e8 !important; /* Accent blue from Google/Sora */
-  background-color: var(--accent-blue, #1a73e8) !important;
+  background-color: #1a73e8 !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 27px !important;
   font-weight: 600 !important;
   font-size: 16px !important;
-  cursor: pointer;
   width: 100%;
   transition: all 0.2s ease !important;
-  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2) !important;
 }
 
 .login-btn-primary:hover {
   opacity: 0.9 !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(26, 115, 232, 0.25) !important;
+  box-shadow: 0 6px 16px rgba(26, 115, 232, 0.3) !important;
 }
 
-/* Social Buttons */
+/* Social Buttons - Always Light */
 .login-social-btn {
   height: 52px !important;
-  background-color: transparent !important;
+  background-color: #ffffff !important;
   border: 1px solid #e5e7eb !important;
-  border: 1px solid var(--border-color, #e0e0e0) !important;
-  color: #4b5563 !important; /* Dark grey */
-  color: var(--text-primary, #4b5563) !important;
+  color: #374151 !important;
   border-radius: 26px !important;
   font-weight: 500 !important;
   font-size: 15px !important;
@@ -126,54 +95,41 @@
   transition: all 0.2s ease !important;
 }
 
-[data-theme="dark"] .login-social-btn {
-    color: #ffffff !important;
-    border-color: #404040 !important;
-}
-
-/* Ensure icons follow the theme color */
 .login-social-btn .anticon {
-    font-size: 20px;
-    color: inherit !important;
+  font-size: 18px;
+  color: #374151 !important;
 }
 
 .login-social-btn:hover {
   background-color: #f9fafb !important;
-  background-color: var(--bg-hover, rgba(0, 0, 0, 0.04)) !important;
   border-color: #d1d5db !important;
   transform: translateY(-1px);
 }
 
-[data-theme="dark"] .login-social-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
 .login-divider {
-  margin: 32px 0 !important;
-  color: #9ca3af !important; /* Light grey */
-  color: var(--text-tertiary, #9ca3af) !important;
+  margin: 28px 0 !important;
+  color: #9ca3af !important;
   font-size: 12px !important;
   font-weight: 600;
   letter-spacing: 1.5px;
 }
 
 .login-footer {
-  margin-top: 40px;
+  margin-top: 36px;
 }
 
 .login-footer-text {
   color: #9ca3af !important;
-  color: var(--text-tertiary, #9ca3af) !important;
   font-size: 13px !important;
 }
 
 .login-footer a {
-  color: #4b5563 !important;
-  color: var(--text-primary, #4b5563) !important;
+  color: #6b7280 !important;
   text-decoration: underline;
   font-weight: 500;
 }
 
-[data-theme="dark"] .login-footer a {
-    color: #ffffff !important;
-}
+.login-footer a:hover {
+  color: #374151 !important;
+}
+
