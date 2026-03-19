@@ -236,7 +236,7 @@ function MainLayout() {
                     updateUser({
                         first_name: data.displayName.split(' ')[0] || '',
                         last_name: data.displayName.split(' ').slice(1).join(' ') || '',
-                        email: data.username,
+                        username: data.username, // Save as username now, not overwriting email
                         profile_picture: data.profileImage
                     });
                 }}

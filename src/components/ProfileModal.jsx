@@ -12,8 +12,10 @@ function ProfileModal({ open, onClose, user, onSave }) {
     useEffect(() => {
         if (open && user) {
             setDisplayName(user.first_name ? `${user.first_name} ${user.last_name || ''}`.trim() : '');
-            setUsername(user.email || '');
-            setProfileImage(user.profile_picture || null); // Theoretical user property
+            // Show only the email prefix (username part) as requested
+            const emailPrefix = user.email ? user.email.split('@')[0] : '';
+            setUsername(user.username || emailPrefix);
+            setProfileImage(user.profile_picture || null);
         }
     }, [open, user]);
 
