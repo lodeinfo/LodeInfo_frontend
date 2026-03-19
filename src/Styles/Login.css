@@ -73,7 +73,7 @@
 /* Primary Button - Accent Blue */
 .login-btn-primary {
   height: 54px !important;
-  background-color: #1a73e8 !important;
+  background-color: #56b5f5 !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 27px !important;
@@ -81,13 +81,13 @@
   font-size: 16px !important;
   width: 100%;
   transition: all 0.2s ease !important;
-  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(86, 181, 245, 0.3) !important;
 }
 
 .login-btn-primary:hover {
   opacity: 0.9 !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(26, 115, 232, 0.3) !important;
+  box-shadow: 0 6px 16px rgba(86, 181, 245, 0.4) !important;
 }
 
 /* Social Buttons - Always Light */
