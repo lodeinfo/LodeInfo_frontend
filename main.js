@@ -9,7 +9,7 @@ let mainWindow = null;
 let floatingWindow = null;
 let tray = null;
 
-const iconPath = path.resolve(__dirname, "public", "lodeinfo.ico");
+const iconPath = path.resolve(__dirname, "public", "LodeInfo.ico");
 
 /* ---------------- MAIN WINDOW ---------------- */
 

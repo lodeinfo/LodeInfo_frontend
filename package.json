@@ -31,7 +31,7 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "public/lodeinfo.ico"
+      "icon": "public/LodeInfo.ico"
     },
     "nsis": {
       "oneClick": false,
@@ -40,7 +40,7 @@
     },
     "mac": {
       "target": "dmg",
-      "icon": "public/lodeinfo.ico",
+      "icon": "public/LodeInfo.ico",
       "category": "public.app-category.productivity"
     },
     "dmg": {
