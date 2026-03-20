@@ -579,12 +579,10 @@
     }
 
     /* ── Edit Profile Modal Styles ── */
-    body .profile-edit-modal .ant-modal-content,
-    body .profile-edit-modal .ant-modal-header {
-        background-color: color-mix(in srgb, var(--bg-primary) 70%, transparent) !important;
-        background: color-mix(in srgb, var(--bg-primary) 70%, transparent) !important;
-        backdrop-filter: blur(16px) !important;
-        -webkit-backdrop-filter: blur(16px) !important;
+    .profile-edit-modal .ant-modal-content,
+    .profile-edit-modal .ant-modal-header {
+        background-color: var(--bg-primary) !important;
+        background: var(--bg-primary) !important;
         border-radius: 20px !important;
         color: var(--text-primary) !important;
     }

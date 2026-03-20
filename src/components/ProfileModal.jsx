@@ -90,6 +90,16 @@ function ProfileModal({ open, onClose, user, onSave }) {
                 }
             }}
         >
+            <style>{`
+                .profile-edit-modal .ant-modal-content {
+                    background: color-mix(in srgb, var(--bg-primary) 65%, transparent) !important;
+                    backdrop-filter: blur(20px) !important;
+                    -webkit-backdrop-filter: blur(20px) !important;
+                }
+                .profile-edit-modal .ant-modal-header {
+                    background: transparent !important;
+                }
+            `}</style>
             <div className="profile-modal-content">
                 <div className="profile-modal-header">
                     <h2 className="profile-modal-title">Edit profile</h2>
