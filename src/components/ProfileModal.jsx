@@ -49,7 +49,7 @@ function ProfileModal({ open, onClose, user, onSave }) {
         } else if (e && e.domEvent && typeof e.domEvent.stopPropagation === 'function') {
             e.domEvent.stopPropagation();
         }
-        
+
         setProfileImage(null);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
@@ -84,9 +84,7 @@ function ProfileModal({ open, onClose, user, onSave }) {
             closable={false}
             styles={{
                 content: {
-                    backgroundColor: 'color-mix(in srgb, var(--bg-primary) 70%, transparent)',
-                    backdropFilter: 'blur(16px)',
-                    WebkitBackdropFilter: 'blur(16px)',
+                    backgroundColor: 'var(--bg-primary)',
                     color: 'var(--text-primary)',
                     borderRadius: '20px',
                     border: '1px solid var(--border-color)',
@@ -120,10 +118,10 @@ function ProfileModal({ open, onClose, user, onSave }) {
                             </div>
                         )}
                     </div>
-                    <input 
-                        type="file" 
-                        ref={fileInputRef} 
-                        style={{ display: 'none' }} 
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        style={{ display: 'none' }}
                         accept="image/*"
                         onChange={handleFileChange}
                     />
@@ -131,7 +129,7 @@ function ProfileModal({ open, onClose, user, onSave }) {
 
                 <div className="profile-form-group">
                     <label className="profile-input-label">Display name</label>
-                    <Input 
+                    <Input
                         value={displayName}
                         onChange={(e) => setDisplayName(e.target.value)}
                         placeholder="Enter your name"
@@ -141,7 +139,7 @@ function ProfileModal({ open, onClose, user, onSave }) {
 
                 <div className="profile-form-group">
                     <label className="profile-input-label">Username</label>
-                    <Input 
+                    <Input
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="Enter your username"
@@ -154,15 +152,15 @@ function ProfileModal({ open, onClose, user, onSave }) {
                 </p>
 
                 <div className="profile-modal-footer">
-                    <Button 
-                        onClick={onClose} 
+                    <Button
+                        onClick={onClose}
                         className="profile-cancel-btn"
                         shape="round"
                     >
                         Cancel
                     </Button>
-                    <Button 
-                        onClick={handleSave} 
+                    <Button
+                        onClick={handleSave}
                         type="primary"
                         className="profile-save-btn"
                         shape="round"
