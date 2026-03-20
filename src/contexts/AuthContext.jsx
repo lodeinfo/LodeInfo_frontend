@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import message from "antd/es/message";
-import logo from "../assets/LodeInfo.ico";
+import logo from "../assets/lodeinfo.icns";
 
 const AuthContext = createContext();
 
@@ -154,7 +154,7 @@ export const AuthProvider = ({ children }) => {
         setUser(prev => {
             const newUser = { ...prev, ...updatedData };
             localStorage.setItem("userDetails", JSON.stringify(newUser));
-            
+
             // Persist profile picture if provided
             if (updatedData.profile_picture && prev?.email) {
                 const persistentPics = JSON.parse(localStorage.getItem("persistent_profile_pics") || "{}");
@@ -166,7 +166,7 @@ export const AuthProvider = ({ children }) => {
                 delete persistentPics[prev.email];
                 localStorage.setItem("persistent_profile_pics", JSON.stringify(persistentPics));
             }
-            
+
             return newUser;
         });
     };
@@ -188,15 +188,15 @@ export const AuthProvider = ({ children }) => {
                         }
                     `}
                 </style>
-                <img 
-                    src={logo} 
-                    alt="Loading..." 
-                    style={{ 
-                        width: '64px', 
-                        height: '64px', 
+                <img
+                    src={logo}
+                    alt="Loading..."
+                    style={{
+                        width: '64px',
+                        height: '64px',
                         animation: 'pulse-loading 1.5s ease-in-out infinite',
                         filter: isDark ? 'invert(1) brightness(1.2)' : 'none'
-                    }} 
+                    }}
                 />
             </div>
         );

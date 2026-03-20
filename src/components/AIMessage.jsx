@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DatabaseOutlined, FileTextOutlined, RobotOutlined, CopyOutlined, CheckOutlined, LikeOutlined, DislikeOutlined, ReloadOutlined } from "@ant-design/icons";
 import ReactMarkdown from "react-markdown";
-import logo from "../assets/LodeInfo.ico";
+import logo from "../assets/lodeinfo.icns";
 import modelsData from "../models_data.json";
 
 const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onRedo, messageId }) => {
@@ -30,16 +30,16 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
         >
             <div className="ai-header">
                 <div className="ai-avatar" style={{ background: "transparent" }}>
-                    <img 
-                        src={logo} 
-                        alt="LodeInfo AI" 
+                    <img
+                        src={logo}
+                        alt="LodeInfo AI"
                         className="ai-logo-img"
-                        style={{ 
-                            width: "24px", 
-                            height: "24px", 
+                        style={{
+                            width: "24px",
+                            height: "24px",
                             objectFit: "contain",
                             filter: "brightness(1.1) contrast(1.1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.1))"
-                        }} 
+                        }}
                     />
                 </div>
                 <span className="ai-name">LodeInfo AI</span>
@@ -124,7 +124,7 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
                 fontSize: "15px",
                 opacity: 0.8
             }}>
-                <LikeOutlined 
+                <LikeOutlined
                     onClick={() => {
                         setLiked(!liked);
                         setDisliked(false);
@@ -134,7 +134,7 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
                     className="feedback-icon"
                     title="Good response"
                 />
-                <DislikeOutlined 
+                <DislikeOutlined
                     onClick={() => {
                         setDisliked(!disliked);
                         setLiked(false);
@@ -144,7 +144,7 @@ const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onR
                     className="feedback-icon"
                     title="Bad response"
                 />
-                <ReloadOutlined 
+                <ReloadOutlined
                     onClick={onRedo}
                     style={{ cursor: "pointer", transition: "all 0.2s" }}
                     className="feedback-icon"

@@ -12,7 +12,8 @@
     "start": "electron .",
     "electron-dev": "concurrently \"vite\" \"electron .\"",
     "dist": "vite build && electron-builder",
-    "win": "vite build && electron-builder --win"
+    "win": "vite build && electron-builder --win",
+    "mac": "vite build && electron-builder --mac"
   },
   "build": {
     "appId": "com.lodeinfo.desktop",
@@ -30,12 +31,24 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "public/LodeInfo.ico"
+      "icon": "public/lodeinfo.icns"
     },
     "nsis": {
       "oneClick": false,
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/LodeInfo.icns",
+      "category": "public.app-category.productivity"
+    },
+    "dmg": {
+      "title": "LodeInfo",
+      "window": {
+        "width": 540,
+        "height": 380
+      }
     }
   },
   "devDependencies": {

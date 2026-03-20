@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }) => {
             document.documentElement.setAttribute('data-theme', savedTheme);
             return savedTheme;
         }
-        
+
         document.documentElement.setAttribute('data-theme', 'light');
         return 'light'; // Default to light theme
     });
@@ -32,7 +32,7 @@ export const ThemeProvider = ({ children }) => {
 
     useEffect(() => {
         const matcher = window.matchMedia('(prefers-color-scheme: dark)');
-        
+
         // Update favicon dynamically based on SYSTEM theme
         const updateFavicon = () => {
             const isSystemDark = matcher.matches;
@@ -40,14 +40,14 @@ export const ThemeProvider = ({ children }) => {
             if (!link) return;
 
             const img = new Image();
-            img.src = '/LodeInfo.ico';
+            img.src = '/lodeinfo.icns';
             img.onload = () => {
                 const canvas = document.createElement('canvas');
                 canvas.width = 32;
                 canvas.height = 32;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, 32, 32);
-                
+
                 const imageData = ctx.getImageData(0, 0, 32, 32);
                 const data = imageData.data;
                 const r = isSystemDark ? 255 : 0;
