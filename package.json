@@ -2,8 +2,7 @@
   "name": "lodeinfo-desktop",
   "version": "1.0.0",
   "description": "LodeInfo Desktop Assistant",
-  "type": "module",
-  "main": "main.cjs",
+  "main": "main.js",
   "author": "LodeInfo",
   "license": "ISC",
   "scripts": {

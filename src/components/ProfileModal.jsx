@@ -84,25 +84,16 @@ function ProfileModal({ open, onClose, user, onSave }) {
             closable={false}
             styles={{
                 content: {
+                    backgroundColor: 'color-mix(in srgb, var(--bg-primary) 70%, transparent)',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    color: 'var(--text-primary)',
                     borderRadius: '20px',
                     border: '1px solid var(--border-color)',
                     boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)'
                 }
             }}
         >
-            <style>{`
-                .profile-edit-modal .ant-modal-content {
-                    background-color: rgba(245, 242, 235, 0.7) !important;
-                    backdrop-filter: blur(25px) saturate(180%) !important;
-                    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-                }
-                [data-theme="dark"] .profile-edit-modal .ant-modal-content {
-                    background-color: rgba(31, 31, 31, 0.7) !important;
-                }
-                .profile-edit-modal .ant-modal-header {
-                    background: transparent !important;
-                }
-            `}</style>
             <div className="profile-modal-content">
                 <div className="profile-modal-header">
                     <h2 className="profile-modal-title">Edit profile</h2>
