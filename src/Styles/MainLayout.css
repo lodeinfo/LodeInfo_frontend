@@ -581,12 +581,14 @@
     /* ── Edit Profile Modal Styles ── */
     body .profile-edit-modal .ant-modal-content,
     body .profile-edit-modal .ant-modal-header {
-        background-color: color-mix(in srgb, var(--bg-primary) 75%, transparent) !important;
-        background: color-mix(in srgb, var(--bg-primary) 75%, transparent) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
+        background: var(--bg-translucent) !important;
+        background-color: var(--bg-translucent) !important;
+        backdrop-filter: blur(25px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
         border-radius: 20px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
         color: var(--text-primary) !important;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
     }
 
     .profile-edit-modal .ant-modal-content {

@@ -51,6 +51,7 @@
     --sidebar-active-bg: #ffffff;
     --sidebar-active-text: #1f1f1f;
     --welcome-color: #1f1f1f;
+    --bg-translucent: rgba(245, 242, 235, 0.6);
 }
 
 /* Dark Theme Variables */
@@ -85,6 +86,7 @@
     --sidebar-active-bg: var(--bg-sidebar-active);
     --sidebar-active-text: var(--text-primary);
     --welcome-color: #ffffff;
+    --bg-translucent: rgba(31, 31, 31, 0.6);
 }
 
 /* Theme-Specific Logo Adjustment */
