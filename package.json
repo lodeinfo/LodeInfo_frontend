@@ -13,7 +13,7 @@
     "electron-dev": "concurrently \"vite\" \"electron .\"",
     "dist": "vite build && electron-builder",
     "win": "vite build && electron-builder --win",
-    "mac": "vite build && electron-builder --mac"
+    "mac": "vite build && electron-builder --mac --publish never"
   },
   "build": {
     "appId": "com.lodeinfo.desktop",
