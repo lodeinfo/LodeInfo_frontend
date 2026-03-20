@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import message from "antd/es/message";
-import logo from "../assets/lodeinfo.icns";
+import logo from "../assets/LodeInfo.ico";
 
 const AuthContext = createContext();
 

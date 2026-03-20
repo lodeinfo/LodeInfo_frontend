@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DatabaseOutlined, FileTextOutlined, RobotOutlined, CopyOutlined, CheckOutlined, LikeOutlined, DislikeOutlined, ReloadOutlined } from "@ant-design/icons";
 import ReactMarkdown from "react-markdown";
-import logo from "../assets/lodeinfo.icns";
+import logo from "../assets/lodeinfo.ico";
 import modelsData from "../models_data.json";
 
 const AIMessage = ({ content, sources, createdAt, selectedModel, onFeedback, onRedo, messageId }) => {
