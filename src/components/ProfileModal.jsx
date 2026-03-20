@@ -92,9 +92,12 @@ function ProfileModal({ open, onClose, user, onSave }) {
         >
             <style>{`
                 .profile-edit-modal .ant-modal-content {
-                    background: color-mix(in srgb, var(--bg-primary) 65%, transparent) !important;
-                    backdrop-filter: blur(20px) !important;
-                    -webkit-backdrop-filter: blur(20px) !important;
+                    background-color: rgba(245, 242, 235, 0.7) !important;
+                    backdrop-filter: blur(25px) saturate(180%) !important;
+                    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+                }
+                [data-theme="dark"] .profile-edit-modal .ant-modal-content {
+                    background-color: rgba(31, 31, 31, 0.7) !important;
                 }
                 .profile-edit-modal .ant-modal-header {
                     background: transparent !important;

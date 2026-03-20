@@ -581,8 +581,6 @@
     /* ── Edit Profile Modal Styles ── */
     .profile-edit-modal .ant-modal-content,
     .profile-edit-modal .ant-modal-header {
-        background-color: var(--bg-primary) !important;
-        background: var(--bg-primary) !important;
         border-radius: 20px !important;
         color: var(--text-primary) !important;
     }
