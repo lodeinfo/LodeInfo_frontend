@@ -84,10 +84,6 @@ function ProfileModal({ open, onClose, user, onSave }) {
             closable={false}
             styles={{
                 content: {
-                    backgroundColor: 'color-mix(in srgb, var(--bg-primary) 70%, transparent)',
-                    backdropFilter: 'blur(16px)',
-                    WebkitBackdropFilter: 'blur(16px)',
-                    color: 'var(--text-primary)',
                     borderRadius: '20px',
                     border: '1px solid var(--border-color)',
                     boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)'
