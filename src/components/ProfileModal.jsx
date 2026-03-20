@@ -5,15 +5,13 @@ import '../Styles/MainLayout.css';
 
 function ProfileModal({ open, onClose, user, onSave }) {
     const [displayName, setDisplayName] = useState('');
-    const [surname, setSurname] = useState('');
     const [username, setUsername] = useState('');
     const [profileImage, setProfileImage] = useState(null);
     const fileInputRef = useRef(null);
 
     useEffect(() => {
         if (open && user) {
-            setDisplayName(user.first_name || '');
-            setSurname(user.last_name || '');
+            setDisplayName(user.first_name ? `${user.first_name} ${user.last_name || ''}`.trim() : '');
             // Show only the email prefix (username part) as requested
             const emailPrefix = user.email ? user.email.split('@')[0] : '';
             setUsername(user.username || emailPrefix);
@@ -38,7 +36,7 @@ function ProfileModal({ open, onClose, user, onSave }) {
 
     const handleSave = () => {
         if (onSave) {
-            onSave({ displayName, surname, username, profileImage });
+            onSave({ displayName, username, profileImage });
         }
         message.success('Profile updated successfully');
         onClose();
@@ -137,16 +135,6 @@ function ProfileModal({ open, onClose, user, onSave }) {
                         value={displayName}
                         onChange={(e) => setDisplayName(e.target.value)}
                         placeholder="Enter your name"
-                        className="profile-input-field"
-                    />
-                </div>
-
-                <div className="profile-form-group">
-                    <label className="profile-input-label">Surname</label>
-                    <Input
-                        value={surname}
-                        onChange={(e) => setSurname(e.target.value)}
-                        placeholder="Enter your surname"
                         className="profile-input-field"
                     />
                 </div>
