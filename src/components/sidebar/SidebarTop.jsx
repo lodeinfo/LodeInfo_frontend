@@ -36,7 +36,7 @@ function SidebarTop({
                         className="sidebar-custom-logo logo-visible"
                     />
                     <span className={`logo-text ${collapsed ? 'logo-text-collapsed' : 'logo-text-expanded'}`}>
-                        Lode
+                        LodeInfo
                     </span>
                 </div>
 

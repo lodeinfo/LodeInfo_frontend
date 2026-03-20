@@ -279,7 +279,8 @@ textarea {
 .ai-header {
     display: flex;
     align-items: center;
-    gap: 8px; /* Reduced from 12px for tighter grouping */
+    gap: 8px;
+    /* Reduced from 12px for tighter grouping */
     margin-bottom: 12px;
 }
 
